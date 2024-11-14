@@ -1,0 +1,98 @@
+<section>
+  <div routerLink="/home-log" id="butn">
+    <img routerLink="/home-log" src="assets/icons/undo_15093184.png" width="40px">
+    <b routerLink="/home-log">Voltar</b>
+  </div>
+  <div id="all-content" *ngFor="let item of user.contatos">
+
+    <div id="left">
+
+      <div id="people">
+
+        <div id="label-people">
+            <label for="people"><b>Pessoas</b></label>
+        </div>
+
+        <div id="contact-people" (click)="contatoSelect(item.contato.nomeUsuario)">
+          <div id="contact">
+              <img src="assets/icons/account_2040484.png" alt="user" height="30px">
+          </div>
+
+          <div id="info">
+
+            <div id="info-separator">
+              <div id="name" style="padding-bottom: 5px;margin-top: 5px;">
+                  {{item.contato.nomeUsuario}}
+              </div>
+            </div>
+
+            <div id="info-separator2">
+              <div id="msg-ntfy">
+                <div id="msg-ntfy-MSG">
+                    <h5>{{item.contato.email}}</h5>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div id="message" >
+      <nav style="margin-bottom: 10px;" *ngIf="contatoSelecionado == item.contato.nomeUsuario && selecionado">
+
+        <div id="separator">
+          <img src="assets/icons/account_2040484.png" alt="" height="45px">
+          <div id="name-status">
+            <label for="img" style="font-size: 1.5rem;">{{item.contato.nomeUsuario}}</label>
+            <h5>status</h5>
+          </div>
+        </div>
+
+      </nav>
+
+      <main style="overflow: auto;">
+        <div *ngIf="contatoSelecionado == item.contato.nomeUsuario && selecionado">
+          <div id="chatbox" *ngIf="mensagens && mensagens.length > 0">
+            <div *ngFor="let men of mensagens">
+              <div *ngIf="men.destinatario.nomeUsuario === item.contato.nomeUsuario && men.remetente.nomeUsuario === user.nomeUsuario">
+                <div class="my-message">
+                  <p>{{ men.conteudo }}<br><span style="font-size: 0.7rem;">{{ men.dataEnvio | date:'dd/MM/yyyy HH:mm' }}</span></p>
+                </div>
+              </div>
+              <div *ngIf="men.remetente.nomeUsuario === item.contato.nomeUsuario && men.destinatario.nomeUsuario === user.nomeUsuario">
+                <div class="other-message">
+                  <p>{{ men.conteudo }}<br><span style="font-size: 0.7rem;">{{ men.dataEnvio | date:'dd/MM/yyyy HH:mm' }}</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+
+
+      <footer *ngIf="selecionado">
+        <div id="footer-area">
+
+          <div id="text-container">
+
+            <input type="text" placeholder="Digite a Sua Mensagem Aqui" style="overflow-wrap: break-word;">
+            <!--  -->
+
+          </div>
+          <div id="button">
+              <button type="button"><img src="assets/icons/1373410.png" alt="" height="35px"></button>
+          </div>
+
+        </div>
+      </footer>
+
+    </div>
+
+  </div>
+</section>
