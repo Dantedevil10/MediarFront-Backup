@@ -9,21 +9,21 @@
       <img id="se" src="assets/Images/justica-706x410_0.jpg"  height="93%">
     </div>
 
-    <div id="second"> <!-- essa div é para a parte do meio em cor normal-->
+    <div id="second" > <!-- essa div é para a parte do meio em cor normal-->
 
-      <h1 style="margin: 60px;">Bem - Vindo : Usuario</h1>
+      <h1 style="margin: 60px;">Bem - Vindo : {{user?.nomeUsuario}}</h1>
       <div class="btns-container"> <!-- essa div guarda os botões iniciais-->
-        <div id="content-box">
+        <div id="content-box" *ngIf="user">
           <div routerLink="/agendar/{{user.id}}" class="btns">
             <img src="assets/icons/meeting_4029413.png" width="70px"><p>Agendar Uma Reunião</p>
           </div>
           <div routerLink="/mensagens/{{user.id}}" class="btns">
             <img src="assets/icons/message_4129700.png" width="70px"><p>Mensagens</p>
           </div>
-          <div class="btns" routerLink="/andamento">
+          <div class="btns" (click)="abrirCaixaProcesso()">
             <img src="assets/icons/hourglass_4992427.png" width="70px"><p>Andamento de Processos</p>
           </div>
-          <div class="btns" routerLink="/historico" >
+          <div class="btns" routerLink="/historico/{{user.id}}" >
             <img src="assets/icons/text_2878671.png" width="70px"><p>Histórico de Processos</p>
           </div>
 
@@ -43,5 +43,18 @@
     <!-- Fim da div First-->
   </div><!-- Fim da div First-->
 
+  <div id="ou" *ngIf="trigger">
+    <div id="tr">
+      <div style="display: flex;flex-direction: column;margin: 10px;">
+        <label style="font-size: 1.1rem;" for="iden">Digite o Numero de identificação do processo</label>
+        <input style="width:97%;padding: 10px;border: 1px solid grey;border-radius: 5px;margin-top: 5px;"
+         type="text" id="iden" [(ngModel)]="numeroProcesso">
+      </div>
+      <div id="dec">
+        <button style="background-color: rgba(255, 0, 0, 0.63);" (click)="abrirCaixaProcesso()">Cancelar</button>
+        <button style="background-color: rgba(0, 128, 0, 0.616);" (click)="irParaAndamento()">Continuar</button>
+      </div>
+    </div>
+  </div>
 
 </section>

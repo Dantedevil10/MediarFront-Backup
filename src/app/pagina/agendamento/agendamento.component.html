@@ -1,45 +1,40 @@
 <section>
-
-
   <div id="butn">
-    <img routerLink="/home-log/{{user.id}}" src="assets/icons/undo_15093184.png" width="40px">
-    <b routerLink="/home-log/{{user.id}}">Voltar</b>
+    <img routerLink="/home-log/{{user?.id}}" src="assets/icons/undo_15093184.png" width="40px">
+    <b routerLink="/home-log/{{user?.id}}">Voltar</b>
   </div>
-
 
   <h1 style="text-align: center;">Abertura De Processo</h1><br>
   <div class="cad-con">
     <label for="dado">Digite Algum dado Do Acusado Para Entrarmos em Contato :</label>
-    <input id="dado" type="text" placeholder="Digite algum dado ou informação sobre o acusado"/>
+    <input id="dado" [(ngModel)]="processo.dadosAcusado" type="text" placeholder="Digite algum dado ou informação sobre o acusado"/>
 
     <label for="nome">Digite o Nome Do Acusado :</label>
-    <input id="nome" type="text" placeholder="Digite o Nome da Pessoa que Você Está acusando"/>
+    <input id="nome" [(ngModel)]="processo.nomeReu" type="text" placeholder="Digite o Nome da Pessoa que Você Está acusando"/>
 
     <label for="ema">Digite Seu Email de Contato :</label>
-    <input id="ema" value="{{user.email}}" type="text" placeholder="Digite Seu Email"/>
+    <input id="ema" [(ngModel)]="processo.emailAutor" value="{{user?.email}}" type="text" placeholder="Digite Seu Email"/>
 
     <label for="cpf">Seu CPF :</label>
-    <input style="border: 1px solid rgba(128, 128, 128, 0.541);" id="cpf" disabled value="{{user.cpf}}" type="text" placeholder="CPF DO AUTOR"/>
+    <input style="border: 1px solid rgba(128, 128, 128, 0.541);" id="cpf" disabled value="{{user?.cpf}}" type="text" placeholder="CPF DO AUTOR"/>
 
     <label for="end">Digite Seu Endereço :</label>
-    <input id="end" type="text" placeholder="Seu Endereço Não Pode Conter Abreviações"/>
+    <input id="end" [(ngModel)]="processo.comprovanteResidencia" type="text" placeholder="Seu Endereço Não Pode Conter Abreviações"/>
 
     <label for="nau">Nome Do Autor Do Processo :</label>
-    <input id="nau" type="text" placeholder="Digite Seu Nome Completo"/>
+    <input id="nau" [(ngModel)]="processo.nomeAutor" type="text" placeholder="Digite Seu Nome Completo"/>
 
     <div id="esc">
       <label for="options">Seu Processo Se Classificaria como Urgente ?</label>
-      <select id="options">
-        <option value="opcao1">Sim </option>
-        <option value="opcao2">Não</option>
+      <select id="options" [(ngModel)]="processo.urgencia">
+        <option value="true">Sim </option>
+        <option value="false">Não</option>
       </select>
     </div>
 
-
     <label for="acu">* Escreva sua acusação com detalhes e justifique a abertura deste processo </label>
-    <textarea style="resize: none" name="acusacao" id="acu"></textarea>
+    <textarea style="resize: none" name="acusacao" [(ngModel)]="processo.descricaoAcusacao" id="acu"></textarea>
 
-    <button class="final-btn">Enviar Meu Processo</button>
+    <button class="final-btn" (click)="enviarProcesso()">Enviar Meu Processo</button>
   </div>
-
 </section>

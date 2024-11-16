@@ -1,9 +1,9 @@
 <section>
-  <div routerLink="/home-log" id="butn">
-    <img routerLink="/home-log" src="assets/icons/undo_15093184.png" width="40px">
-    <b routerLink="/home-log">Voltar</b>
+  <div routerLink="/home-log/{{user?.id}}" id="butn">
+    <img routerLink="/home-log/{{user?.id}}" src="assets/icons/undo_15093184.png" width="40px">
+    <b routerLink="/home-log/{{user?.id}}">Voltar</b>
   </div>
-  <div id="all-content" *ngFor="let item of user.contatos">
+  <div id="all-content" *ngFor="let item of user?.contatos">
 
     <div id="left">
 
@@ -59,12 +59,12 @@
         <div *ngIf="contatoSelecionado == item.contato.nomeUsuario && selecionado">
           <div id="chatbox" *ngIf="mensagens && mensagens.length > 0">
             <div *ngFor="let men of mensagens">
-              <div *ngIf="men.destinatario.nomeUsuario === item.contato.nomeUsuario && men.remetente.nomeUsuario === user.nomeUsuario">
+              <div *ngIf="men.destinatario.nomeUsuario === item.contato.nomeUsuario && men.remetente.nomeUsuario === user?.nomeUsuario">
                 <div class="my-message">
                   <p>{{ men.conteudo }}<br><span style="font-size: 0.7rem;">{{ men.dataEnvio | date:'dd/MM/yyyy HH:mm' }}</span></p>
                 </div>
               </div>
-              <div *ngIf="men.remetente.nomeUsuario === item.contato.nomeUsuario && men.destinatario.nomeUsuario === user.nomeUsuario">
+              <div *ngIf="men.remetente.nomeUsuario === item.contato.nomeUsuario && men.destinatario.nomeUsuario === user?.nomeUsuario">
                 <div class="other-message">
                   <p>{{ men.conteudo }}<br><span style="font-size: 0.7rem;">{{ men.dataEnvio | date:'dd/MM/yyyy HH:mm' }}</span></p>
                 </div>

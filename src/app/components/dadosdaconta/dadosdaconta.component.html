@@ -1,13 +1,13 @@
 <section><br>
-  <div routerLink="/home-log/{{user.id}}" id="butn">
-    <img routerLink="/home-log/{{user.id}}" src="assets/icons/undo_15093184.png" width="40px">
-    <b routerLink="/home-log/{{user.id}}">Voltar</b>
+  <div routerLink="/home-log/{{user?.id}}" id="butn">
+    <img routerLink="/home-log/{{user?.id}}" src="assets/icons/undo_15093184.png" width="40px">
+    <b routerLink="/home-log/{{user?.id}}">Voltar</b>
   </div>
 
   <div id="g-c">
     <aside style="margin-left: 2%;">
       <div id="user-content">
-        <p>{{user.nomeUsuario}}</p>
+        <p>{{user?.nomeUsuario}}</p>
         <div id="user-icon"></div>
       </div>
       <div id="let">
@@ -30,9 +30,9 @@
           <label for="tipo">Tipo de Conta<p style="font-size: 0.8rem;">(Não pode ser alterado)</p></label>
         </div>
         <div>
-          <input type="text" value="{{user.nomeUsuario}}" id="nome">
-          <input type="text" value="{{user.email}}" id="email">
-          <p id="cpf" style="margin-top: 10px;">{{ formatarCpf(user.cpf) }}</p>
+          <input type="text" value="{{user?.nomeUsuario}}" id="nome">
+          <input type="text" value="{{user?.email}}" id="email">
+          <p id="cpf" *ngIf="user" style="margin-top: 10px;">{{ formatarCpf(user.cpf) }}</p>
           <p id="tipo" style="margin-top: 26px;">Usuário</p>
         </div>
       </div>

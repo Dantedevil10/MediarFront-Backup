@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ServiceUService } from '../../services/service-u.service';
+import { Mensagem, Usuario } from '../../models/modelos.model';
+
 
 @Component({
   selector: 'app-telademensagem',
   templateUrl: './telademensagem.component.html',
-  styleUrl: './telademensagem.component.css'
+  styleUrls: ['./telademensagem.component.css']  // Corrigido para 'styleUrls'
 })
 export class TelademensagemComponent {
-  user: any; // Para armazenar os dados do usuário
-  mensagens: any;
-  errorMessage: string | null = null; // Para armazenar mensagens de erro, se necessário
-
-  // filteredMessages: any[] = []; ignore essa variavel
+  user: Usuario | null = null; // Utilizando a interface Usuario
+  mensagens: Mensagem[] = [];  // Utilizando a interface Mensagem
+  errorMessage: string | null = null;
 
   contatoSelecionado: string = "";
   selecionado: boolean = false;
@@ -23,14 +23,13 @@ export class TelademensagemComponent {
   ) {}
 
   ngOnInit() {
-    const userId = this.route.snapshot.paramMap.get('id'); // Pega o id da URL
+    const userId = this.route.snapshot.paramMap.get('id'); // Pega o ID da URL
 
     if (userId) {
-      // Passa o id da rota para o serviço
+      // Passa o ID da rota para o serviço
       this.serviceUService.DadosUsers(userId).subscribe({
-        next: (data) => {
-          this.user = data; // Armazena os dados do usuário
-          // console.log(data);
+        next: (data: Usuario) => {
+          this.user = data; // Armazena os dados do usuário usando a interface Usuario
         },
         error: (err) => {
           console.error(err);
@@ -40,29 +39,20 @@ export class TelademensagemComponent {
     }
 
     this.serviceUService.DadosMensagens().subscribe({
-      next:(data)=>{
-        this.mensagens = data;
-        // console.log(data)
+      next: (data: Mensagem[]) => {
+        this.mensagens = data; // Armazena os dados das mensagens usando a interface Mensagem
       },
-      error:(err)=>{
+      error: (err) => {
         console.error(err);
-        this.errorMessage = 'Erro ao carregar dados do usuário'; // Define mensagem de erro
+        this.errorMessage = 'Erro ao carregar mensagens'; // Define mensagem de erro
       }
-    })
-
-
+    });
   }
 
-  contatoSelect(contatoSelecionado: any) {
-    // console.log(contatoSelecionado);
-    if (contatoSelecionado) {
-      this.selecionado = true;
-    } else if (contatoSelecionado == "") {
-      this.selecionado = false;
-    } else {
-      this.selecionado = false;
-    }
+  contatoSelect(contatoSelecionado: string) {
+    this.contatoSelecionado = contatoSelecionado;
+    this.selecionado = contatoSelecionado !== "";
 
-    return this.contatoSelecionado = contatoSelecionado;
+    return this.contatoSelecionado;
   }
 }

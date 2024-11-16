@@ -1,29 +1,33 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { ServiceUService } from '../../services/service-u.service';
+import { Usuario } from './../../models/modelos.model'; // Importe a interface de usuário
 
 @Component({
   selector: 'app-home-log',
   templateUrl: './home-log.component.html',
-  styleUrl: './home-log.component.css'
+  styleUrls: ['./home-log.component.css'] // Corrigido: styleUrl -> styleUrls
 })
 export class HomeLogComponent {
 
-  user: any; // Para armazenar os dados do usuário
+  user: Usuario | null = null; // Armazena os dados do usuário com tipagem correta
   errorMessage: string | null = null; // Para armazenar mensagens de erro, se necessário
+  trigger:boolean = false;
+  numeroProcesso: string = '';  // Variável para armazenar o número do processo
 
   constructor(
     private route: ActivatedRoute,
-    private serviceUService: ServiceUService
+    private serviceUService: ServiceUService,
+    private router: Router
   ) {}
 
-  ngOnInit(){
+  ngOnInit() {
     const userId = this.route.snapshot.paramMap.get('id');
 
     if (userId) {
       // Busca os dados do usuário usando o serviço
       this.serviceUService.DadosUsers(userId).subscribe({
-        next: (data) => {
+        next: (data: Usuario) => {
           this.user = data; // Armazena os dados do usuário
         },
         error: (err) => {
@@ -34,4 +38,16 @@ export class HomeLogComponent {
     }
   }
 
+  abrirCaixaProcesso() {
+    this.trigger = !this.trigger;  // Alterna o valor de trigger
+  }
+
+  irParaAndamento() {
+    if (this.numeroProcesso) {
+      this.router.navigate(['/andamento', this.numeroProcesso]);  // Redireciona para a página de andamento com o ID do processo
+    } else {
+      console.error('Número do processo não informado');
+      // Talvez exiba um aviso ou mensagem para o usuário
+    }
+  }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ServiceUService } from '../../services/service-u.service';
+import { Usuario } from '../../models/modelos.model';
 
 @Component({
   selector: 'app-dadosdaconta',
@@ -8,7 +9,7 @@ import { ServiceUService } from '../../services/service-u.service';
   styleUrl: './dadosdaconta.component.css'
 })
 export class DadosdacontaComponent {
-  user: any; // Para armazenar os dados do usuário
+  user: Usuario | null = null; // Armazena os dados do usuário com tipagem correta
   errorMessage: string | null = null; // Para armazenar mensagens de erro, se necessário
 
   constructor(
@@ -16,13 +17,13 @@ export class DadosdacontaComponent {
     private serviceUService: ServiceUService
   ) {}
 
-  ngOnInit(){
+  ngOnInit() {
     const userId = this.route.snapshot.paramMap.get('id');
 
     if (userId) {
       // Busca os dados do usuário usando o serviço
       this.serviceUService.DadosUsers(userId).subscribe({
-        next: (data) => {
+        next: (data: Usuario) => {
           this.user = data; // Armazena os dados do usuário
         },
         error: (err) => {
@@ -33,8 +34,8 @@ export class DadosdacontaComponent {
     }
   }
 
-   // Função para formatar o CPF
-   formatarCpf(cpf: string): string {
+  // Função para formatar o CPF
+  formatarCpf(cpf: string): string {
     if (!cpf || cpf.length !== 11) {
       return 'CPF inválido';
     }

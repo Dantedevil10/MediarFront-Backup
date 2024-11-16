@@ -1,4 +1,4 @@
-<section>
+<section *ngIf="user">
   <header>
     <nav id="nav">
       <div class="logo">
@@ -13,8 +13,8 @@
 
   <main>
     <div id="butn">
-      <img routerLink="/home-log" src="assets/icons/undo_15093184.png" width="40px">
-      <b routerLink="/home-log">Voltar</b>
+      <img routerLink="/home-log/{{user.id}}" src="assets/icons/undo_15093184.png" width="40px">
+      <b routerLink="/home-log/{{user.id}}">Voltar</b>
     </div>
 
     <div id="main-content">
@@ -46,23 +46,26 @@
         </div>
       </div>
 
-      <div id="pro" *ngFor="let item of user.processosAbertos">
-        <!-- Filtro Status -->
-        <div *ngIf="filtroStatus === '' || filtroStatus === item.status">
-          <!-- Filtro Urgência -->
-          <div *ngIf="filtroUrgencia === '' || (filtroUrgencia === 'Sim' && item.urgencia) || (filtroUrgencia === 'Não' && !item.urgencia)">
-            <!-- Filtro Nome do Autor -->
-            <div *ngIf="filtroNomeAutor === '' || item.nomeAutor.toLowerCase().includes(filtroNomeAutor.toLowerCase())">
-              <!-- Filtro CPF do Autor -->
-              <div *ngIf="filtroCpfAutor === '' || item.cpfAutor.includes(filtroCpfAutor)">
-                <h1>Titulo do Processo</h1>
-                <p><b>Status:</b> {{ item.status }}</p>
-                <p><b>Numero de identificação do processo:</b> {{ item.id }}</p>
-                <p><b>Autor do Processo:</b> {{ item.nomeAutor }}</p>
-                <p *ngIf="item.urgencia; else naour"><b>Urgente:</b> Sim</p>
-                <ng-template #naour> <p><b>Urgente:</b> Não</p> </ng-template>
-                 <!-- Botão para ir para a tela de andamento -->
-                <a routerLink="/andamento/{{item.id}}" class="btn-andamento">Ver Andamento</a>
+      <div *ngIf="user.processosAbertos.length > 0; else naopo">
+        <div id="pro" *ngFor="let item of user.processosAbertos">
+          <!-- Filtro Status -->
+          <div *ngIf="filtroStatus === '' || filtroStatus === item.status">
+            <!-- Filtro Urgência -->
+            <div *ngIf="filtroUrgencia === '' || (filtroUrgencia === 'Sim' && item.urgencia) || (filtroUrgencia === 'Não' && !item.urgencia)">
+              <!-- Filtro Nome do Autor -->
+              <div *ngIf="filtroNomeAutor === '' || item.nomeAutor.toLowerCase().includes(filtroNomeAutor.toLowerCase())">
+                <!-- Filtro CPF do Autor -->
+                <div *ngIf="filtroCpfAutor === '' || item.cpfAutor.includes(filtroCpfAutor)">
+                  <h1>Titulo do Processo</h1>
+                  <p><b>Status:</b> {{ item.status }}</p>
+                  <p><b>Numero de identificação do processo:</b> {{ item.id }}</p>
+                  <p><b>Autor do Processo:</b> {{ item.nomeAutor }}</p>
+                  <p ><b>Mediador do Processo:</b> {{ item.mediadorEscolhido?.nomeUsuario }}</p>
+                  <p *ngIf="item.urgencia; else naour"><b>Urgente:</b> Sim</p>
+                  <ng-template #naour> <p><b>Urgente:</b> Não</p> </ng-template>
+                  <!-- Botão para ir para a tela de andamento -->
+                  <a routerLink="/andamento/{{item.id}}" class="btn-andamento">Ver Andamento</a>
+                </div>
               </div>
             </div>
           </div>

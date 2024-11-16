@@ -115,4 +115,33 @@
   display: flex;
   padding-bottom: 100px;
 }
-
+#ou{
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: -25%;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.349);
+}
+#tr{
+  position: fixed;
+  width: 50%;
+  height: 140px;
+  left: 25%;
+  top: 35%;
+  z-index: 2;
+  border-radius: 4px;
+  background-color: rgb(255, 255, 255);
+}
+#dec{
+  display: flex;
+  gap: 20px;
+  margin-top: 2%;
+  margin-left: 2%;
+}
+#dec button{
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1.1rem;
+}

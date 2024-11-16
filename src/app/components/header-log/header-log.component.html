@@ -7,13 +7,13 @@
     <img id="fo" routerLink="/noti" style="margin-top: 10px;cursor: pointer;" src="assets/icons/3239958.png" width="35px" height="35px">
 
     <div id="user-content" (click)="toggleMenu()">
-      <p>Usuario</p>
+      <p>{{user?.nomeUsuario}}</p>
       <div id="user-icon"></div>
     </div>
 
     <!-- Menu Dropdown -->
     <div id="dropdown-menu" *ngIf="isMenuOpen">
-      <a href="/conta/{{user.id}}">Dados Da Conta</a>
+      <a href="/conta/{{user?.id}}">Dados Da Conta</a>
       <a href="#">Sair</a>
     </div>
 
