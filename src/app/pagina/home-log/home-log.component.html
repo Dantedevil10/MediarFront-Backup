@@ -14,10 +14,10 @@
       <h1 style="margin: 60px;">Bem - Vindo : Usuario</h1>
       <div class="btns-container"> <!-- essa div guarda os botões iniciais-->
         <div id="content-box">
-          <div routerLink="/agendar" class="btns">
+          <div routerLink="/agendar/{{user.id}}" class="btns">
             <img src="assets/icons/meeting_4029413.png" width="70px"><p>Agendar Uma Reunião</p>
           </div>
-          <div routerLink="/mensagens" class="btns">
+          <div routerLink="/mensagens/{{user.id}}" class="btns">
             <img src="assets/icons/message_4129700.png" width="70px"><p>Mensagens</p>
           </div>
           <div class="btns" routerLink="/andamento">

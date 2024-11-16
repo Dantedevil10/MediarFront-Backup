@@ -4,40 +4,55 @@
     <img routerLink="/home-log" src="assets/icons/undo_15093184.png" width="40px">
     <b routerLink="/home-log">Voltar</b>
   </div>
+
   <main>
+    <h1 style="text-align: center; text-transform: uppercase; padding: 30px;">Andamento de Caso</h1>
 
-    <h1 style="text-align: center; text-transform: uppercase; padding: 30px; ">Andamento de caso</h1> <br>
-
+    <!-- Barra de Progresso -->
     <div id="container-progress">
       <div #teste id="progress-on"></div>
       <div id="progress-bar">
 
         <div class="circle">
-            <div class="other-circle">
-                <p>1</p>
-            </div>
-            <p>Caso aberto</p>
+          <div class="other-circle">
+            <p>1</p>
+          </div>
+          <p>Caso aberto</p>
         </div>
 
         <div class="circle">
-            <div class="other-circle">
-                <p>2</p>
-            </div>
-            <p>Caso em análise</p>
+          <div class="other-circle">
+            <p>2</p>
+          </div>
+          <p>Caso em análise</p>
         </div>
 
         <div class="circle">
-            <div class="other-circle">
-                <p>3</p>
-            </div>
-            <p>Caso finalizado</p>
+          <div class="other-circle">
+            <p>3</p>
+          </div>
+          <p>Caso finalizado</p>
         </div>
 
       </div>
     </div>
 
-    <div style="margin-top: 10%;margin-left: 10%;font-size: 1.5rem;">ID do seu processo :</div>
+    <!-- Detalhes do Processo -->
+    <div style="margin-top: 10%; margin-left: 10%; font-size: 1.5rem;">
+      <strong>ID do seu processo:</strong> {{ processo?.id }}
+    </div>
+
+    <div style="margin-left: 10%; font-size: 1.0rem;" >
+      <strong>Autor:</strong> {{ processo?.nomeAutor }}
+    </div>
+
+    <div style="margin-left: 10%; font-size: 1.0rem;">
+      <strong>Réu:</strong> {{ processo?.nomeReu }}
+    </div>
+
+    <div style="margin-left: 10%; font-size: 1.0rem;">
+      <strong>Descrição da Acusação:</strong> {{ processo?.descricaoAcusacao }}
+    </div>
 
   </main>
-
 </section>

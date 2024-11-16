@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TeladecadastroComponent } from './components/teladecadastro/teladecadastro.component';
 import { AgendamentoComponent } from './pagina/agendamento/agendamento.component';
@@ -16,15 +16,15 @@ import { HomePrincipalComponent } from './components/home-principal/home-princip
 
 const routes: Routes = [
   { path: 'cadastro', component: TeladecadastroComponent},
-  { path: 'agendar', component: AgendamentoComponent},
+  { path: 'agendar/:id', component: AgendamentoComponent},
   { path: 'login', component: TeladeloginComponent},
   { path: 'sobre-nos', component: SobreNosComponent},
-  { path: 'andamento', component: TeladeandamentoComponent},
-  { path: 'home-log', component: HomeLogComponent},
-  { path: 'home-logM', component: HomeLogMComponent},
+  { path: 'andamento/:id', component: TeladeandamentoComponent},
+  { path: 'home-log/:id', component: HomeLogComponent},
+  { path: 'home-logM/:id', component: HomeLogMComponent},
   { path: 'noti', component: NotificacaoComponent},
-  { path: 'historico', component: HistoricoComponent},
-  { path: 'conta', component: DadosdacontaComponent},
+  { path: 'historico/:id', component: HistoricoComponent},
+  { path: 'conta/:id', component: DadosdacontaComponent},
   { path: 'chatIa', component: ChatcomiaComponent},
   { path: 'mensagens/:id', component: TelademensagemComponent}, // Tela-mensagens: parte do chat.
   { path: '**', component: HomePrincipalComponent },// Rota Principal Caso O Caminho Não Seja Encontrado

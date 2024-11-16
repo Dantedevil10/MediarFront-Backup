@@ -1,26 +1,79 @@
 <section>
   <header>
-      <nav id="nav">
-          <div class="logo">
-              <img src="/assets/Images/Prancheta 1.png" alt="">
-          </div>
-
-          <div id = "nav-user">
-              <img src="/assets/Images/74472.png" alt="user-icon">
-              <span>Usuario</span>
-          </div>
-      </nav>
+    <nav id="nav">
+      <div class="logo">
+        <img src="/assets/Images/Prancheta 1.png" alt="">
+      </div>
+      <div id="nav-user">
+        <img src="/assets/Images/74472.png" alt="user-icon">
+        <span>{{ user.nomeUsuario }}</span>
+      </div>
+    </nav>
   </header>
 
   <main>
-      <div id="butn">
-          <img routerLink="/home-log" src="assets/icons/undo_15093184.png" width="40px">
-          <b routerLink="/home-log">Voltar</b>
+    <div id="butn">
+      <img routerLink="/home-log" src="assets/icons/undo_15093184.png" width="40px">
+      <b routerLink="/home-log">Voltar</b>
+    </div>
+
+    <div id="main-content">
+      <div id="filtro">
+        <div class="fi">
+          <label for="status">Mostrar Processos Com Base em:</label>
+          <select id="status" [(ngModel)]="filtroStatus">
+            <option value="">Todos</option>
+            <option value="ABERTO">ABERTO</option>
+            <option value="FINALIZADO">FINALIZADO</option>
+            <option value="EM_ANALISE">EM ANÁLISE</option>
+          </select>
         </div>
-      <div id="main-content">
-              <samp id="text-main">
-              Você Ainda Não Possui Processos Abertos e/ou Finalizados.
-              </samp>
+        <div class="fi">
+          <label for="urgencia">Urgência</label>
+          <select id="urgencia" [(ngModel)]="filtroUrgencia">
+            <option value="">Todos</option>
+            <option value="Sim">Sim</option>
+            <option value="Não">Não</option>
+          </select>
+        </div>
+        <div class="fi">
+          <label for="autor">Pesquisar Pelo Nome do Autor</label>
+          <input id="autor" type="text" [(ngModel)]="filtroNomeAutor" placeholder="Digite o Nome do Autor">
+        </div>
+        <div class="fi">
+          <label for="cpfAutor">Pesquisar Pelo CPF do Autor</label>
+          <input id="cpfAutor" type="text" [(ngModel)]="filtroCpfAutor" placeholder="Digite o CPF do Autor" maxlength="11">
+        </div>
       </div>
+
+      <div id="pro" *ngFor="let item of user.processosAbertos">
+        <!-- Filtro Status -->
+        <div *ngIf="filtroStatus === '' || filtroStatus === item.status">
+          <!-- Filtro Urgência -->
+          <div *ngIf="filtroUrgencia === '' || (filtroUrgencia === 'Sim' && item.urgencia) || (filtroUrgencia === 'Não' && !item.urgencia)">
+            <!-- Filtro Nome do Autor -->
+            <div *ngIf="filtroNomeAutor === '' || item.nomeAutor.toLowerCase().includes(filtroNomeAutor.toLowerCase())">
+              <!-- Filtro CPF do Autor -->
+              <div *ngIf="filtroCpfAutor === '' || item.cpfAutor.includes(filtroCpfAutor)">
+                <h1>Titulo do Processo</h1>
+                <p><b>Status:</b> {{ item.status }}</p>
+                <p><b>Numero de identificação do processo:</b> {{ item.id }}</p>
+                <p><b>Autor do Processo:</b> {{ item.nomeAutor }}</p>
+                <p *ngIf="item.urgencia; else naour"><b>Urgente:</b> Sim</p>
+                <ng-template #naour> <p><b>Urgente:</b> Não</p> </ng-template>
+                 <!-- Botão para ir para a tela de andamento -->
+                <a routerLink="/andamento/{{item.id}}" class="btn-andamento">Ver Andamento</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #naopo>
+        <h1 id="text-main">
+          Você Ainda Não Possui Processos.
+        </h1>
+      </ng-template>
+    </div>
   </main>
 </section>

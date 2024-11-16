@@ -1,6 +1,6 @@
 section{
   min-height: 100vh;
-  background-color: rgb(227, 239, 250);
+  background-color: rgba(218, 222, 224, 0.438);
 }
 
 #butn{
@@ -33,12 +33,12 @@ section{
 
 
 .cad-con{
-  border: 1px solid white;
-  background-color: #d3a992b4;
-  width: 500px;
+  box-shadow: 1px 1px 6px black;
+  background-color: rgba(218, 222, 224, 0.438);
+  width: 600px;
   padding: 10px;
   margin: auto;
-  border-radius: 10px;
+  border-radius: 5px;
   flex-direction: column;
   justify-content: center;
   gap: 10px;
