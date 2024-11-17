@@ -11,6 +11,7 @@ import { Router } from '@angular/router';  // Importe o Router
 })
 export class AgendamentoComponent {
   user: Usuario | null = null; // Para armazenar os dados do usuário
+
   processo: ProcessoCri = {
     criadorId: '', // ID do criador (não o objeto completo)
     nomeAutor: '',
@@ -40,6 +41,7 @@ export class AgendamentoComponent {
           this.processo.criadorId = data.id; // Preenche o criadorId com o ID do usuário
           this.processo.cpfAutor = data.cpf; // Preenche o CPF do autor automaticamente
           this.processo.emailAutor = data.email; // Preenche o email do autor automaticamente
+          this.processo.nomeAutor = data.nomeUsuario;
         },
         error: (err) => {
           console.error(err);
@@ -59,7 +61,7 @@ export class AgendamentoComponent {
           // Redireciona para a página de histórico do usuário
           if (this.user) {
           this.router.navigate([`/historico/${this.user.id}`]);
-        }
+          }
         },
         error: (err) => {
           console.error('Erro ao criar processo:', err);

@@ -89,7 +89,7 @@ label{
   align-items: center;
   width: 140px;
   height: 10%;
-  justify-content: space-between;
+  justify-content: center;
   gap:20px;
   margin-right: 50px;
   border-radius: 20px;
@@ -100,4 +100,53 @@ label{
 #user-content:hover{
   background-color:rgba(106, 137, 165, 0.692);
   cursor: pointer;
+}
+
+#ou{
+  margin-top: 100px;
+  justify-content: center;
+  display: flex;
+  padding-bottom: 100px;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: -25%;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.349);
+}
+#tr{
+  position: fixed;
+  width: 50%;
+  height: 40%;
+  left: 25%;
+  top: 30%;
+  z-index: 2;
+  border-radius: 4px;
+  background-color: rgb(255, 255, 255);
+}
+#dec{
+  display: flex;
+  gap: 20px;
+  margin-top: 2%;
+  margin-left: 2%;
+}
+#dec button{
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1.1rem;
+}
+.out{
+  margin-bottom: 0;
+}
+.ka{
+  margin-bottom: 0;
+}
+select{
+  padding: 10px;
+  width: 211.5%;
+}
+#t{
+  margin-top: 15%;
+  margin-bottom: 5%;
 }

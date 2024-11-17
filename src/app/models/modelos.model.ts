@@ -14,6 +14,15 @@ export interface Mediador {
   mensagensEnviadas: Mensagem[];
   mensagensRecebidas: Mensagem[];
 }
+export interface MediadorCri{
+  senha: string;
+  cpf: string;
+  email: string;
+  nomeUsuario: string;
+  tribunalAtuacao: string;
+  cidadeAtuacao: string;
+  titulacaoGraduacao: string;
+}
 
 // Modelo para Usuário
 export interface Usuario {
@@ -28,6 +37,13 @@ export interface Usuario {
   mensagensEnviadas: Mensagem[];
   mensagensRecebidas: Mensagem[];
 }
+export interface UsuarioCri{
+  email: string;
+  cpf: string;
+  senha: string;
+  nomeUsuario: string;
+}
+
 
 // Modelo para Processo
 export interface Processo {

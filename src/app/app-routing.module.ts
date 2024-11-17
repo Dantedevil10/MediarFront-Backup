@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'sobre-nos', component: SobreNosComponent},
   { path: 'andamento/:id', component: TeladeandamentoComponent},
   { path: 'home-log/:id', component: HomeLogComponent},
-  { path: 'home-logM/:id', component: HomeLogMComponent},
+  { path: 'home-logM', component: HomeLogMComponent},
   { path: 'noti', component: NotificacaoComponent},
   { path: 'historico/:id', component: HistoricoComponent},
   { path: 'conta/:id', component: DadosdacontaComponent},

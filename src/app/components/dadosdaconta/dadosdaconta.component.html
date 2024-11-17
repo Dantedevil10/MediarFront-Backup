@@ -8,10 +8,10 @@
     <aside style="margin-left: 2%;">
       <div id="user-content">
         <p>{{user?.nomeUsuario}}</p>
-        <div id="user-icon"></div>
+
       </div>
       <div id="let">
-        <p>Alterar Minha Senha</p>
+        <p (click)="abrirCaixaProcesso()">Alterar Minha Senha</p>
         <p>Excluir Minha Conta</p>
       </div>
     </aside>
@@ -28,15 +28,70 @@
           <label for="email">Email</label>
           <label for="cpf">CPF</label>
           <label for="tipo">Tipo de Conta<p style="font-size: 0.8rem;">(Não pode ser alterado)</p></label>
+          <label *ngIf="user?.tipoDeConta == 'MEDIADOR' " for="t">Tribunal De Atuação</label>
+          <label *ngIf="user?.tipoDeConta == 'MEDIADOR' " for="c">Cidade De Atuação</label>
+          <label *ngIf="user?.tipoDeConta == 'MEDIADOR' " for="n">Nível de Gradução</label>
+
         </div>
-        <div>
-          <input type="text" value="{{user?.nomeUsuario}}" id="nome">
-          <input type="text" value="{{user?.email}}" id="email">
+        <div *ngIf="user?.tipoDeConta == 'USUARIO' ">
+          <input type="text" [(ngModel)]="usuario.nomeUsuario" value="{{user?.nomeUsuario}}" id="nome">
+          <input type="text" [(ngModel)]="usuario.email" value="{{user?.email}}" id="email">
           <p id="cpf" *ngIf="user" style="margin-top: 10px;">{{ formatarCpf(user.cpf) }}</p>
-          <p id="tipo" style="margin-top: 26px;">Usuário</p>
+          <p id="tipo" style="margin-top: 26px;">{{user?.tipoDeConta}}</p>
+        </div>
+        <div *ngIf="user?.tipoDeConta == 'MEDIADOR' ">
+          <input type="text" [(ngModel)]="mediador.nomeUsuario" value="{{user?.nomeUsuario}}" id="nome">
+          <input type="text" [(ngModel)]="mediador.email" value="{{user?.email}}" id="email">
+          <p id="cpf" *ngIf="user" style="margin-top: 10px;">{{ formatarCpf(user.cpf) }}</p>
+          <p id="tipo" style="margin-top: 26px;">{{user?.tipoDeConta}}</p>
+          <select [(ngModel)]="mediador.tribunalAtuacao" name="" id="t">
+            <option value="TODOS">Todos</option>
+            <option value="ESTADUAL">Estadual</option>
+            <option value="FEDERAL">Federal</option>
+          </select>
+          <input [(ngModel)]="mediador.cidadeAtuacao" type="text" id="c">
+          <select [(ngModel)]="mediador.titulacaoGraduacao" name="" id="n">
+            <option value="Doutorado">Doutorado</option>
+            <option value="Mestrado">Mestrado</option>
+            <option value="Tecnólogo">Tecnólogo</option>
+            <option value="Graduação">Graduação</option>
+            <option value="Ensino Médio">Ensino Médio</option>
+          </select>
+
+
         </div>
       </div>
-      <button id="fb" disabled >Gravar Dados</button>
+      <button *ngIf="user?.tipoDeConta == 'USUARIO' " id="fb" (click)="editarUsuario()">Gravar Dados</button>
+      <button *ngIf="user?.tipoDeConta == 'MEDIADOR' " id="fb" (click)="editarMediador()">Gravar Dados</button>
+    </div>
+  </div>
+
+  <div id="ou" *ngIf="trigger">
+    <div id="tr">
+      <div *ngIf="user?.tipoDeConta == 'USUARIO' " style="display: flex;flex-direction: column;margin: 10px;">
+        <label class="out" style="font-size: 1.1rem;" for="iden">Digite Sua Senha atual :</label>
+        <input class="ka" style="width:97%;padding: 10px;border: 1px solid grey;border-radius: 5px;"
+         type="text" [(ngModel)]="senhaVelha" id="iden" >
+        <label class="out" style="font-size: 1.1rem;" for="iden">Digite uma Nova Senha :</label>
+        <input class="ka" [(ngModel)]="usuario.senha" style="width:97%;padding: 10px;border: 1px solid grey;border-radius: 5px;"
+         type="text" id="iden" >
+      </div>
+      <div *ngIf="user?.tipoDeConta == 'MEDIADOR' " style="display: flex;flex-direction: column;margin: 10px;">
+        <label class="out" style="font-size: 1.1rem;" for="iden">Digite Sua Senha atual :</label>
+        <input class="ka" style="width:97%;padding: 10px;border: 1px solid grey;border-radius: 5px;"
+         type="text" [(ngModel)]="senhaVelha" id="iden" >
+        <label class="out" style="font-size: 1.1rem;" for="iden">Digite uma Nova Senha :</label>
+        <input class="ka" [(ngModel)]="mediador.senha" style="width:97%;padding: 10px;border: 1px solid grey;border-radius: 5px;"
+         type="text" id="iden" >
+      </div>
+      <div id="dec" *ngIf="user?.tipoDeConta == 'USUARIO' ">
+        <button style="background-color: rgba(255, 0, 0, 0.63);" (click)="abrirCaixaProcesso()">Cancelar</button>
+        <button style="background-color: rgba(0, 128, 0, 0.616);"(click)="editarSenha()">Continuar</button>
+      </div>
+      <div id="dec" *ngIf="user?.tipoDeConta == 'MEDIADOR' ">
+        <button style="background-color: rgba(255, 0, 0, 0.63);" (click)="abrirCaixaProcesso()">Cancelar</button>
+        <button style="background-color: rgba(0, 128, 0, 0.616);"(click)="editarSenhaMediador()">Continuar</button>
+      </div>
     </div>
   </div>
 

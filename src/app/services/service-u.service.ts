@@ -1,4 +1,4 @@
-import { Mediador, Mensagem, Processo, ProcessoCri, Usuario } from './../models/modelos.model';
+import { Mediador, MediadorCri, Mensagem, Processo, ProcessoCri, Usuario, UsuarioCri } from './../models/modelos.model';
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -16,6 +16,10 @@ export class ServiceUService {
   private processosGateway = 'http://localhost:8080/processos/';
   private mensagensGateway = 'http://localhost:8080/mensagens';
   private processosUrl = 'http://localhost:8080/processos/criarProcesso';
+  private criarUser = 'http://localhost:8080/userCom/criarUsuario';
+  private criarmediador = 'http://localhost:8080/userMedi/criarMedi';
+  private editarUser = 'http://localhost:8080/userCom/editar'
+  private editarmediador = 'http://localhost:8080/userMedi/editarMedi'
 
   constructor(private http: HttpClient) {}
 
@@ -40,5 +44,21 @@ export class ServiceUService {
   // Método para criar um novo processo
   criarProcesso(processo: ProcessoCri): Observable<ProcessoCri> {
     return this.http.post<ProcessoCri>(this.processosUrl, processo);  // Envia um POST para criar o processo
+  }
+
+  criarUsuario(usuario:UsuarioCri): Observable<UsuarioCri>{
+    return this.http.post<UsuarioCri>(this.criarUser,usuario);
+  }
+
+  editarUsuario(usuario:UsuarioCri,id:any): Observable<UsuarioCri>{
+    return this.http.put<UsuarioCri>(`${this.editarUser}/${id}`,usuario)
+  }
+
+  criarMediador(mediador:MediadorCri): Observable<MediadorCri>{
+    return this.http.post<MediadorCri>(this.criarmediador,mediador);
+  }
+
+  editarMediador(mediador:MediadorCri,id:any): Observable<MediadorCri>{
+    return this.http.put<MediadorCri>(`${this.editarmediador}/${id}`,mediador)
   }
 }

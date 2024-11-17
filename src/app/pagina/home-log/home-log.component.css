@@ -56,7 +56,7 @@
 .btns{
   width: 25vh;
   height: 25vh;
-  background: rgb(204, 201, 201);
+  background: rgba(255, 255, 255, 0.795);
   /* border: 2px solid white; */
   padding: 10px;
   border-radius: 20px;
