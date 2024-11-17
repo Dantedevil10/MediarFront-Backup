@@ -14,8 +14,11 @@
       <h1 style="margin: 60px;">Bem - Vindo : {{user?.nomeUsuario}}</h1>
       <div class="btns-container"> <!-- essa div guarda os botões iniciais-->
         <div id="content-box" *ngIf="user">
-          <div routerLink="/agendar/{{user.id}}" class="btns">
+          <div *ngIf="user.tipoDeConta == 'USUARIO' " routerLink="/agendar/{{user.id}}" class="btns">
             <img src="assets/icons/meeting_4029413.png" width="70px"><p>Agendar Uma Reunião</p>
+          </div>
+          <div *ngIf="user.tipoDeConta == 'MEDIADOR' " (click)="abrirCaixaEnviar()" class="btns">
+            <img src="assets/icons/meeting_4029413.png" width="70px"><p>Contactar um Usuario Pela Primeira Vez</p>
           </div>
           <div routerLink="/mensagens/{{user.id}}" class="btns">
             <img src="assets/icons/message_4129700.png" width="70px"><p>Mensagens</p>
@@ -53,6 +56,23 @@
       <div id="dec">
         <button style="background-color: rgba(255, 0, 0, 0.63);" (click)="abrirCaixaProcesso()">Cancelar</button>
         <button style="background-color: rgba(0, 128, 0, 0.616);" (click)="irParaAndamento()">Continuar</button>
+      </div>
+    </div>
+  </div>
+  <div id="ou" *ngIf="triggerM">
+    <div id="tu">
+      <p style="margin: 5px; color: rgba(0, 0, 0, 0.562);">* Depois de Enviar esta mensagem, o usuario que você contatou estará disponível na sua aba de mensagens</p>
+      <div style="display: flex;flex-direction: column;margin: 10px;">
+        <label style="font-size: 1.1rem;" for="iden">Digite o Numero de identificação(ID) do Usuario</label>
+        <input style="width:97%;padding: 10px;border: 1px solid grey;border-radius: 5px;margin-top: 5px;"
+         type="text" id="iden" [(ngModel)]="mensagem.destinatario">
+        <label style="font-size: 1.1rem;" for="iden">Digite a Sua Mensagem Inicial</label>
+        <input style="width:97%;padding: 10px;border: 1px solid grey;border-radius: 5px;margin-top: 5px;"
+         type="text" id="iden" [(ngModel)]="mensagem.conteudo">
+      </div>
+      <div id="dec">
+        <button style="background-color: rgba(255, 0, 0, 0.63);" (click)="abrirCaixaEnviar()">Cancelar</button>
+        <button style="background-color: rgba(0, 128, 0, 0.616);" (click)="enviarMensagemPrimeirVez()">Continuar</button>
       </div>
     </div>
   </div>

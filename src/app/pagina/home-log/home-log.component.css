@@ -145,3 +145,13 @@
   padding: 10px;
   font-size: 1.1rem;
 }
+#tu{
+  position: fixed;
+  width: 50%;
+  height: 43%;
+  left: 25%;
+  top: 25%;
+  z-index: 2;
+  border-radius: 4px;
+  background-color: rgb(255, 255, 255);
+}

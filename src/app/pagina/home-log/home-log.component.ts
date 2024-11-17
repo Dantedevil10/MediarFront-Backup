@@ -12,8 +12,16 @@ export class HomeLogComponent {
 
   user: Usuario | Mediador | null = null; // Armazena os dados do usuário com tipagem correta
   errorMessage: string | null = null; // Para armazenar mensagens de erro, se necessário
+
   trigger:boolean = false;
+  triggerM:boolean = false ;
   numeroProcesso: string = '';  // Variável para armazenar o número do processo
+
+  mensagem = {
+    remetente: '',
+    destinatario: '',
+    conteudo: ''
+  };
 
   constructor(
     private route: ActivatedRoute,
@@ -40,6 +48,8 @@ export class HomeLogComponent {
         this.serviceUService.DadosMediador(userId).subscribe({
           next:(data:Mediador)=>{
             this.user = data;
+            this.mensagem.remetente = data.id;
+
           },
           error:(err)=>{
             alert('Erro ao Carregar Dados')
@@ -54,6 +64,9 @@ export class HomeLogComponent {
   abrirCaixaProcesso() {
     this.trigger = !this.trigger;  // Alterna o valor de trigger
   }
+  abrirCaixaEnviar() {
+    this.triggerM = !this.triggerM;  // Alterna o valor de trigger
+  }
 
   irParaAndamento() {
     if (this.numeroProcesso) {
@@ -63,4 +76,18 @@ export class HomeLogComponent {
       // Talvez exiba um aviso ou mensagem para o usuário
     }
   }
+
+  enviarMensagemPrimeirVez(){
+    this.serviceUService.enviarMensagem(this.mensagem).subscribe({
+      next:(data)=>{
+        alert('Mensagem Enviada, Cheque suas mensagens')
+        console.log(data)
+      },
+      error:(err)=>{
+        alert('Erro ao enviar Mensagem')
+        console.log(err)
+      }
+    })
+  }
+
 }

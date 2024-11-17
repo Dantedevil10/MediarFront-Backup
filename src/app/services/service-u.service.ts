@@ -1,4 +1,4 @@
-import { Mediador, MediadorCri, Mensagem, Processo, ProcessoCri, Usuario, UsuarioCri } from './../models/modelos.model';
+import { Mediador, MediadorCri, Mensagem, MensagemEnv, Processo, ProcessoCri, Usuario, UsuarioCri } from './../models/modelos.model';
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -14,10 +14,15 @@ export class ServiceUService {
   private defaultGateway = 'http://localhost:8080/userCom/';
   private defaultMediador = 'http://localhost:8080/userMedi/'
   private processosGateway = 'http://localhost:8080/processos/';
+
   private mensagensGateway = 'http://localhost:8080/mensagens';
+  private enviarmensagem = 'http://localhost:8080/mensagens/enviar'
+
   private processosUrl = 'http://localhost:8080/processos/criarProcesso';
+
   private criarUser = 'http://localhost:8080/userCom/criarUsuario';
   private criarmediador = 'http://localhost:8080/userMedi/criarMedi';
+
   private editarUser = 'http://localhost:8080/userCom/editar'
   private editarmediador = 'http://localhost:8080/userMedi/editarMedi'
 
@@ -60,5 +65,9 @@ export class ServiceUService {
 
   editarMediador(mediador:MediadorCri,id:any): Observable<MediadorCri>{
     return this.http.put<MediadorCri>(`${this.editarmediador}/${id}`,mediador)
+  }
+
+  enviarMensagem(mensagem:MensagemEnv):Observable<MensagemEnv>{
+    return this.http.post<MensagemEnv>(this.enviarmensagem,mensagem)
   }
 }

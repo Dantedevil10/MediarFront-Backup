@@ -83,6 +83,11 @@ export interface Mensagem {
   conteudo: string;
   dataEnvio: Date;
 }
+export interface MensagemEnv{
+  remetente: string;
+  destinatario: string;
+  conteudo: string;
+}
 
 // Modelo para Contato
 export interface Contato {

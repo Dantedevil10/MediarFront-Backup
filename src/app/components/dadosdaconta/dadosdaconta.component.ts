@@ -69,7 +69,7 @@ export class DadosdacontaComponent {
             this.mediador.titulacaoGraduacao = data.titulacaoGraduacao;
           },
           error:(err)=>{
-            alert('Erro ao Carregar Dados')
+            console.log('Erro ao Carregar Dados')
           }
         })
       }catch(err){

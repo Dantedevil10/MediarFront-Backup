@@ -1,4 +1,4 @@
-<section *ngIf="user">
+<section>
   <header>
     <nav id="nav">
       <div class="logo">
@@ -6,15 +6,15 @@
       </div>
       <div id="nav-user">
         <img src="/assets/Images/74472.png" alt="user-icon">
-        <span>{{ user.nomeUsuario }}</span>
+        <span>{{ user?.nomeUsuario || media?.nomeUsuario}}</span>
       </div>
     </nav>
   </header>
 
   <main>
     <div id="butn">
-      <img routerLink="/home-log/{{user.id}}" src="assets/icons/undo_15093184.png" width="40px">
-      <b routerLink="/home-log/{{user.id}}">Voltar</b>
+      <img routerLink="/home-log/{{user?.id || media?.id}}" src="assets/icons/undo_15093184.png" width="40px">
+      <b routerLink="/home-log/{{user?.id || media?.id}}">Voltar</b>
     </div>
 
     <div id="main-content">
@@ -46,8 +46,8 @@
         </div>
       </div>
 
-      <div *ngIf="user.processosAbertos.length > 0; else naopo">
-        <div id="pro" *ngFor="let item of user.processosAbertos">
+      <div *ngIf="user && user.processosAbertos.length > 0 || media && media.processosRecebidos.length > 0; else naopo">
+        <div id="pro" *ngFor="let item of user?.processosAbertos || media?.processosRecebidos">
           <!-- Filtro Status -->
           <div *ngIf="filtroStatus === '' || filtroStatus === item.status">
             <!-- Filtro Urgência -->

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ServiceUService } from '../../services/service-u.service';
-import { Mensagem, Usuario } from '../../models/modelos.model';
+import { Mediador, Mensagem, Usuario } from '../../models/modelos.model';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { Mensagem, Usuario } from '../../models/modelos.model';
   styleUrls: ['./telademensagem.component.css']  // Corrigido para 'styleUrls'
 })
 export class TelademensagemComponent {
-  user: Usuario | null = null; // Utilizando a interface Usuario
+  user: Usuario | Mediador | null = null; // Utilizando a interface Usuario
   mensagens: Mensagem[] = [];  // Utilizando a interface Mensagem
   errorMessage: string | null = null;
 
@@ -23,30 +23,33 @@ export class TelademensagemComponent {
   ) {}
 
   ngOnInit() {
-    const userId = this.route.snapshot.paramMap.get('id'); // Pega o ID da URL
+    const userId = this.route.snapshot.paramMap.get('id');
 
     if (userId) {
-      // Passa o ID da rota para o serviço
-      this.serviceUService.DadosUsers(userId).subscribe({
-        next: (data: Usuario) => {
-          this.user = data; // Armazena os dados do usuário usando a interface Usuario
-        },
-        error: (err) => {
-          console.error(err);
-          this.errorMessage = 'Erro ao carregar dados do usuário'; // Define mensagem de erro
-        }
-      });
-    }
-
-    this.serviceUService.DadosMensagens().subscribe({
-      next: (data: Mensagem[]) => {
-        this.mensagens = data; // Armazena os dados das mensagens usando a interface Mensagem
-      },
-      error: (err) => {
-        console.error(err);
-        this.errorMessage = 'Erro ao carregar mensagens'; // Define mensagem de erro
+      try{
+        // Busca os dados do usuário usando o serviço
+        this.serviceUService.DadosUsers(userId).subscribe({
+          next: (data: Usuario) => {
+            this.user = data; // Armazena os dados do usuário
+          },
+          error: (err) => {
+            console.error(err);
+            this.errorMessage = 'Erro ao carregar dados do usuário'; // Define mensagem de erro
+          }
+        });
+        //Caso o Usuario não for encontrado, um Usuario do tipo Mediador Será Buscado
+        this.serviceUService.DadosMediador(userId).subscribe({
+          next:(data:Mediador)=>{
+            this.user = data;
+          },
+          error:(err)=>{
+            console.log('Erro ao Carregar Dados' + err)
+          }
+        })
+      }catch(err){
+        console.log(err)
       }
-    });
+    }
   }
 
   contatoSelect(contatoSelecionado: string) {
