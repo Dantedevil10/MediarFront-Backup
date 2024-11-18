@@ -15,7 +15,6 @@ import { AgendamentoComponent } from './pagina/agendamento/agendamento.component
 import { ChatcomiaComponent } from './pagina/chatcomia/chatcomia.component';
 import { HistoricoComponent } from './pagina/historico/historico.component';
 import { HomeLogComponent } from './pagina/home-log/home-log.component';
-import { HomeLogMComponent } from './pagina/home-log-m/home-log-m.component';
 import { NotificacaoComponent } from './pagina/notificacao/notificacao.component';
 import { SobreNosComponent } from './pagina/sobre-nos/sobre-nos.component';
 import { TeladeandamentoComponent } from './pagina/teladeandamento/teladeandamento.component';
@@ -33,7 +32,6 @@ import { TeladeandamentoComponent } from './pagina/teladeandamento/teladeandamen
     ChatcomiaComponent,
     HistoricoComponent,
     HomeLogComponent,
-    HomeLogMComponent,
     NotificacaoComponent,
     SobreNosComponent,
     TeladeandamentoComponent
