@@ -44,7 +44,7 @@ export class DadosdacontaComponent {
       try{
         // Busca os dados do usuário usando o serviço
         this.serviceUService.DadosUsers(userId).subscribe({
-          next: (data: Usuario) => {
+          next: (data) => {
             this.user = data; // Armazena os dados do usuário
             this.usuario.cpf = data.cpf;
             this.usuario.email = data.email;
@@ -58,7 +58,7 @@ export class DadosdacontaComponent {
         });
         //Caso o Usuario não for encontrado, um Usuario do tipo Mediador Será Buscado
         this.serviceUService.DadosMediador(userId).subscribe({
-          next:(data:Mediador)=>{
+          next:(data)=>{
             this.user = data;
             this.mediador.cpf = data.cpf;
             this.mediador.email = data.email;
