@@ -52,7 +52,7 @@ export class HomeLogComponent {
 
           },
           error:(err)=>{
-            alert('Erro ao Carregar Dados')
+            console.log('Erro ao Carregar Dados')
           }
         })
       }catch(err){

@@ -3,7 +3,7 @@
     <img routerLink="/home-log/{{user?.id}}" src="assets/icons/undo_15093184.png" width="40px">
     <b routerLink="/home-log/{{user?.id}}">Voltar</b>
   </div>
-  <div id="all-content" *ngFor="let item of user?.contatos">
+  <div id="all-content" >
 
     <div id="left">
 
@@ -11,7 +11,7 @@
         <div id="label-people">
             <label for="people"><b>Pessoas</b></label>
         </div>
-        <div id="contact-people" (click)="contatoSelect(item.contato.nomeUsuario)">
+        <div id="contact-people" *ngFor="let item of user?.contatos" (click)="contatoSelect(item.contato.nomeUsuario,item.contato.id)">
           <div id="contact">
               <img src="assets/icons/account_2040484.png" alt="user" height="30px">
           </div>
@@ -35,12 +35,12 @@
     </div>
 
     <div id="message" >
-      <nav style="margin-bottom: 10px;" *ngIf="contatoSelecionado == item.contato.nomeUsuario && selecionado">
+      <nav style="margin-bottom: 10px;" *ngIf="contatoSelecionado && selecionado">
 
         <div id="separator">
           <img src="assets/icons/account_2040484.png" alt="" height="45px">
           <div id="name-status">
-            <label for="img" style="font-size: 1.5rem;">{{item.contato.nomeUsuario}}</label>
+            <label for="img" style="font-size: 1.5rem;">{{contatoSelecionado}}</label>
             <h5>status</h5>
           </div>
         </div>
@@ -48,15 +48,19 @@
       </nav>
 
       <main style="overflow: auto;">
-        <div *ngIf="contatoSelecionado == item.contato.nomeUsuario && selecionado">
+        <div *ngIf="selecionado">
           <div id="chatbox" *ngIf="mensagens && mensagens.length > 0">
+            <!-- Loop through mensagens and display them based on sender and recipient -->
             <div *ngFor="let men of mensagens">
-              <div *ngIf="men.destinatario.nomeUsuario === item.contato.nomeUsuario && men.remetente.nomeUsuario === user?.nomeUsuario">
+              <!-- My messages -->
+              <div *ngIf="men.remetente.nomeUsuario === user?.nomeUsuario">
                 <div class="my-message">
                   <p>{{ men.conteudo }}<br><span style="font-size: 0.7rem;">{{ men.dataEnvio | date:'dd/MM/yyyy HH:mm' }}</span></p>
                 </div>
               </div>
-              <div *ngIf="men.remetente.nomeUsuario === item.contato.nomeUsuario && men.destinatario.nomeUsuario === user?.nomeUsuario">
+
+              <!-- Other person's messages -->
+              <div *ngIf="men.remetente.nomeUsuario !== user?.nomeUsuario">
                 <div class="other-message">
                   <p>{{ men.conteudo }}<br><span style="font-size: 0.7rem;">{{ men.dataEnvio | date:'dd/MM/yyyy HH:mm' }}</span></p>
                 </div>
@@ -70,17 +74,12 @@
 
       <footer *ngIf="selecionado">
         <div id="footer-area">
-
           <div id="text-container">
-
-            <input type="text" placeholder="Digite a Sua Mensagem Aqui" style="overflow-wrap: break-word;">
-            <!--  -->
-
+            <input type="text" [(ngModel)]="enviarMen.conteudo" placeholder="Digite a Sua Mensagem Aqui" style="overflow-wrap: break-word;">
           </div>
           <div id="button">
-              <button type="button"><img src="assets/icons/1373410.png" alt="" height="35px"></button>
+            <button (click)="enviarMensagem()" type="button"><img src="assets/icons/1373410.png" alt="" height="35px"></button>
           </div>
-
         </div>
       </footer>
 

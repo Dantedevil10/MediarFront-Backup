@@ -92,8 +92,12 @@ export interface MensagemEnv{
 // Modelo para Contato
 export interface Contato {
   id: number;
-  usuario: ParticipanteBase;
-  contato: ParticipanteBase;
+  contato: {
+    id:string
+    email:string
+    nomeUsuario:string
+    tipoDeConta:string
+  };
 }
 
 // Modelo para ParticipanteBase (pode ser Mediador ou Usuário)
