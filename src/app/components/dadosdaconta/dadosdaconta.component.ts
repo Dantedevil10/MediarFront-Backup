@@ -37,13 +37,13 @@ export class DadosdacontaComponent {
     private serviceUService: ServiceUService
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     const userId = this.route.snapshot.paramMap.get('id');
 
     if (userId) {
       try{
         // Busca os dados do usuário usando o serviço
-        this.serviceUService.DadosUsers(userId).subscribe({
+        await this.serviceUService.DadosUsers(userId).subscribe({
           next: (data) => {
             this.user = data; // Armazena os dados do usuário
             this.usuario.cpf = data.cpf;
@@ -57,7 +57,7 @@ export class DadosdacontaComponent {
           }
         });
         //Caso o Usuario não for encontrado, um Usuario do tipo Mediador Será Buscado
-        this.serviceUService.DadosMediador(userId).subscribe({
+        await this.serviceUService.DadosMediador(userId).subscribe({
           next:(data)=>{
             this.user = data;
             this.mediador.cpf = data.cpf;
