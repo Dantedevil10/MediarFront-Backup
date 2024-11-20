@@ -75,7 +75,11 @@
         <button style="background-color: rgba(0, 128, 0, 0.616);" (click)="enviarMensagemPrimeirVez()">Continuar</button>
       </div>
     </div>
-
+  </div>
+  <div id="ou" style="background-color: rgba(0, 0, 0, 0.700);" *ngIf="!carregado">
+    <div id="ca" style="color: white;z-index: 3;margin-top: 20%;">
+      <h1>Carregando ...</h1>
+    </div>
   </div>
 
 </section>

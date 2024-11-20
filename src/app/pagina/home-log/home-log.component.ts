@@ -17,6 +17,8 @@ export class HomeLogComponent {
   triggerM:boolean = false ;
   numeroProcesso: string = '';  // Variável para armazenar o número do processo
 
+  carregado:boolean = false;
+
   mensagem = {
     remetente: '',
     destinatario: '',
@@ -38,6 +40,7 @@ export class HomeLogComponent {
         this.serviceUService.DadosUsers(userId).subscribe({
           next: (data: Usuario) => {
             this.user = data; // Armazena os dados do usuário
+            this.carregado = true
           },
           error: (err) => {
             console.error(err);
@@ -49,7 +52,7 @@ export class HomeLogComponent {
           next:(data:Mediador)=>{
             this.user = data;
             this.mensagem.remetente = data.id;
-
+            this.carregado = true
           },
           error:(err)=>{
             console.log('Erro ao Carregar Dados')
