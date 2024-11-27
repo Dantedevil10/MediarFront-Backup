@@ -2,7 +2,7 @@
 #pri{
   background-color: #131B2B;
   height: 100vh;
-
+  overflow: hidden;
 }
 #nav-bar{
   display: flex;
@@ -59,10 +59,9 @@
   transition: background-color 0.7s;
 }
 main{
-  display:    flex;
-  justify-content: center;
-  flex-direction: column;
-  height: 470px;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
 }
 #main-content{
   display: flex;
@@ -109,12 +108,12 @@ main{
 #main-button button p{
   font-size: 19px;
 }
-#wing{
+/* #wing{
   width: 400px;
   position: absolute;
   left: 60%;
   top: 8.5%;
-}
+} */
 
 
 
@@ -127,6 +126,9 @@ main{
   /* height: 600px; */
   background-color: #e7e7e7;
   color: #da7b48;
+  *{
+    color: #a5755b;
+  }
 }
 #ic{
   display: flex;
@@ -151,7 +153,7 @@ main{
   padding-bottom: 100px;
 }
 #pbtn{
-  border: 2px solid #da7b48;
+  border: 2px solid #a5755b;
   padding: 20px;
   font-size: 1rem;
   color: #d86a30;
@@ -160,5 +162,6 @@ main{
 }
 #pbtn:hover{
   background-color: #d86a30;
+  border: 2px solid transparent;
   color: white;
 }

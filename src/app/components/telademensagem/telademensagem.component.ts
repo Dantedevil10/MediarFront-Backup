@@ -90,6 +90,8 @@ export class TelademensagemComponent {
           console.log(err)
         }
       })
+    }else{
+      alert('Você Não Pode Enviar Mensagens Vazias')
     }
   }
 

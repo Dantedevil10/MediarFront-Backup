@@ -1,12 +1,11 @@
+<app-header-log></app-header-log>
 <section>
-  <div routerLink="/home-log/{{user?.id}}" id="butn">
+  <!-- <div routerLink="/home-log/{{user?.id}}" id="butn">
     <img routerLink="/home-log/{{user?.id}}" src="assets/icons/undo_15093184.png" width="40px">
     <b routerLink="/home-log/{{user?.id}}">Voltar</b>
-  </div>
+  </div> -->
   <div id="all-content" >
-
     <div id="left">
-
       <div id="people">
         <div id="label-people">
             <label for="people"><b>Pessoas</b></label>
@@ -31,11 +30,10 @@
           </div>
         </div>
       </div>
-
     </div>
 
     <div id="message" >
-      <nav style="margin-bottom: 10px;" *ngIf="contatoSelecionado && selecionado">
+      <nav *ngIf="contatoSelecionado && selecionado">
 
         <div id="separator">
           <img src="assets/icons/account_2040484.png" alt="" height="45px">
@@ -47,7 +45,7 @@
 
       </nav>
 
-      <main style="overflow: auto;">
+      <main style="overflow: auto;background-color: #1b334609;">
         <div *ngIf="selecionado">
           <div id="chatbox" *ngIf="mensagens && mensagens.length > 0">
             <!-- Loop through mensagens and display them based on sender and recipient -->
@@ -75,7 +73,7 @@
       <footer *ngIf="selecionado">
         <div id="footer-area">
           <div id="text-container">
-            <input type="text" [(ngModel)]="enviarMen.conteudo" placeholder="Digite a Sua Mensagem Aqui" style="overflow-wrap: break-word;">
+            <input id="ca" type="text" [(ngModel)]="enviarMen.conteudo" placeholder="Digite a Sua Mensagem Aqui">
           </div>
           <div id="button">
             <button (click)="enviarMensagem()" type="button"><img src="assets/icons/1373410.png" alt="" height="35px"></button>

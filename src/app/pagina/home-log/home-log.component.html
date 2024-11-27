@@ -1,85 +1,83 @@
 
 <app-header-log/>
-<section id="fir">
 
-  <div id="first"> <!-- essa div é pra colocar as imagens de fundo que são 2-->
-
-    <div id="images"> <!-- essa div guarda as imagens de fundo-->
-      <img id="fi" src="assets/Images/Direito-Criminal-800x400.jpg"  height="93%">
-      <img id="se" src="assets/Images/justica-706x410_0.jpg"  height="93%">
+<div id="second" >
+  <h1 style="padding: 60px;">Olá {{user?.nomeUsuario}} Bem-Vindo ao Mediar</h1>
+  <div class="btns-container"> <!-- essa div guarda os botões iniciais-->
+    <div style="display: flex;margin-right: 3%;margin-left: 5%;width: 40%;">
+      <img width="100%" style="border-radius: 10px;"
+      src="assets/Images/fotoCoisasJudicial.png" alt="">
+    </div>
+    <div id="content-box" *ngIf="user">
+      <h1>Conheça Nossos Serviços</h1>
+      <div *ngIf="user.tipoDeConta == 'USUARIO' " routerLink="/agendar/{{user.id}}" class="btns">
+        <!-- <img src="assets/icons/meeting_4029413.png" width="70px"> -->
+        <p>Agendar Uma Reunião</p>
+      </div>
+      <div *ngIf="user.tipoDeConta == 'MEDIADOR' " (click)="abrirCaixaEnviar()" class="btns">
+        <!-- <img src="assets/icons/meeting_4029413.png" width="70px"> -->
+        <p>Contactar um Usuario Pela Primeira Vez</p>
+      </div>
+      <div routerLink="/mensagens/{{user.id}}" class="btns">
+        <!-- <img src="assets/icons/message_4129700.png" width="70px" -->
+        <p>Mensagens</p>
+      </div>
+      <div class="btns" (click)="abrirCaixaProcesso()">
+        <!-- <img src="assets/icons/hourglass_4992427.png" width="70px"> -->
+        <p>Andamento de Processos</p>
+      </div>
+      <div class="btns" routerLink="/historico/{{user.id}}" >
+        <!-- <img src="assets/icons/text_2878671.png" width="70px"> -->
+        <p>Histórico de Processos</p>
+      </div>
+      <div class="btns" style="padding:20px;" routerLink="/chatIa">
+        <p>Chat Com Inteligência Artificial</p>
+      </div>
+      <div class="btns" style="padding:20px;">
+        <p>Preciso De Ajuda ou Reportar Algo</p>
+      </div>
+      <p>A justiça nunca será feita até aqueles que não são afetados se indignarem como os que são. <br>
+        "Benjamin Franklin"
+      </p>
     </div>
 
-    <div id="second" > <!-- essa div é para a parte do meio em cor normal-->
+  </div>
+</div><!-- Fim da div second-->
 
-      <h1 style="margin: 60px;">Bem - Vindo : {{user?.nomeUsuario}}</h1>
-      <div class="btns-container"> <!-- essa div guarda os botões iniciais-->
-        <div id="content-box" *ngIf="user">
-          <div *ngIf="user.tipoDeConta == 'USUARIO' " routerLink="/agendar/{{user.id}}" class="btns">
-            <img src="assets/icons/meeting_4029413.png" width="70px"><p>Agendar Uma Reunião</p>
-          </div>
-          <div *ngIf="user.tipoDeConta == 'MEDIADOR' " (click)="abrirCaixaEnviar()" class="btns">
-            <img src="assets/icons/meeting_4029413.png" width="70px"><p>Contactar um Usuario Pela Primeira Vez</p>
-          </div>
-          <div routerLink="/mensagens/{{user.id}}" class="btns">
-            <img src="assets/icons/message_4129700.png" width="70px"><p>Mensagens</p>
-          </div>
-          <div class="btns" (click)="abrirCaixaProcesso()">
-            <img src="assets/icons/hourglass_4992427.png" width="70px"><p>Andamento de Processos</p>
-          </div>
-          <div class="btns" routerLink="/historico/{{user.id}}" >
-            <img src="assets/icons/text_2878671.png" width="70px"><p>Histórico de Processos</p>
-          </div>
-
-          <div class="btns" routerLink="/chatIa">
-            <img src="" width="70px"><p>Chat Com Inteligência Artificial</p>
-          </div>
-          <div class="btns">
-            <img src="" width="70px"><p>Preciso De Ajuda ou Reportar Algo</p>
-          </div>
-
-
-        </div>
-
-      </div>
-      <!-- Fim da div second-->
-    </div><!-- Fim da div second-->
-    <!-- Fim da div First-->
-  </div><!-- Fim da div First-->
-
-  <div id="ou" *ngIf="trigger">
-    <div id="tr">
-      <div style="display: flex;flex-direction: column;margin: 10px;">
-        <label style="font-size: 1.1rem;" for="iden">Digite o Numero de identificação do processo</label>
-        <input style="width:97%;padding: 10px;border: 1px solid grey;border-radius: 5px;margin-top: 5px;"
-         type="text" id="iden" [(ngModel)]="numeroProcesso">
-      </div>
-      <div id="dec">
-        <button style="background-color: rgba(255, 0, 0, 0.63);" (click)="abrirCaixaProcesso()">Cancelar</button>
-        <button style="background-color: rgba(0, 128, 0, 0.616);" (click)="irParaAndamento()">Continuar</button>
-      </div>
+<div id="ou" *ngIf="trigger">
+  <div id="tr">
+    <div style="display: flex;flex-direction: column;margin: 10px;">
+      <label style="font-size: 1.1rem;" for="iden">Digite o Numero de identificação do processo</label>
+      <input style="width:97%;padding: 10px;border: 1px solid grey;border-radius: 5px;margin-top: 5px;"
+        type="text" id="iden" [(ngModel)]="numeroProcesso">
+    </div>
+    <div id="dec">
+      <button style="background-color: rgba(255, 0, 0, 0.63);" (click)="abrirCaixaProcesso()">Cancelar</button>
+      <button style="background-color: rgba(0, 128, 0, 0.616);" (click)="irParaAndamento()">Continuar</button>
     </div>
   </div>
-  <div id="ou" *ngIf="triggerM">
-    <div id="tu">
-      <p style="margin: 5px; color: rgba(0, 0, 0, 0.562);">* Depois de Enviar esta mensagem, o usuario que você contatou estará disponível na sua aba de mensagens</p>
-      <div style="display: flex;flex-direction: column;margin: 10px;">
-        <label style="font-size: 1.1rem;" for="iden">Digite o Numero de identificação(ID) do Usuario</label>
-        <input style="width:97%;padding: 10px;border: 1px solid grey;border-radius: 5px;margin-top: 5px;"
-         type="text" id="iden" [(ngModel)]="mensagem.destinatario">
-        <label style="font-size: 1.1rem;" for="iden">Digite a Sua Mensagem Inicial</label>
-        <input style="width:97%;padding: 10px;border: 1px solid grey;border-radius: 5px;margin-top: 5px;"
-         type="text" id="iden" [(ngModel)]="mensagem.conteudo">
-      </div>
-      <div id="dec">
-        <button style="background-color: rgba(255, 0, 0, 0.63);" (click)="abrirCaixaEnviar()">Cancelar</button>
-        <button style="background-color: rgba(0, 128, 0, 0.616);" (click)="enviarMensagemPrimeirVez()">Continuar</button>
-      </div>
+</div>
+<div id="ou" *ngIf="triggerM">
+  <div id="tu">
+    <p style="margin: 5px; color: rgba(0, 0, 0, 0.562);">* Depois de Enviar esta mensagem, o usuario que você contatou estará disponível na sua aba de mensagens</p>
+    <div style="display: flex;flex-direction: column;margin: 10px;">
+      <label style="font-size: 1.1rem;" for="iden">Digite o Numero de identificação(ID) do Usuario</label>
+      <input style="width:97%;padding: 10px;border: 1px solid grey;border-radius: 5px;margin-top: 5px;"
+        type="text" id="iden" [(ngModel)]="mensagem.destinatario">
+      <label style="font-size: 1.1rem;" for="iden">Digite a Sua Mensagem Inicial</label>
+      <input style="width:97%;padding: 10px;border: 1px solid grey;border-radius: 5px;margin-top: 5px;"
+        type="text" id="iden" [(ngModel)]="mensagem.conteudo">
+    </div>
+    <div id="dec">
+      <button style="background-color: rgba(255, 0, 0, 0.63);" (click)="abrirCaixaEnviar()">Cancelar</button>
+      <button style="background-color: rgba(0, 128, 0, 0.616);" (click)="enviarMensagemPrimeirVez()">Continuar</button>
     </div>
   </div>
-  <div id="ou" style="background-color: rgba(0, 0, 0, 0.700);" *ngIf="!carregado">
-    <div id="ca" style="color: white;z-index: 3;margin-top: 20%;">
-      <h1>Carregando ...</h1>
-    </div>
+</div>
+<div id="ou" style="background-color: rgba(0, 0, 0, 0.700);" *ngIf="!carregado">
+  <div id="ca" style="color: white;z-index: 3;margin-top: 20%;">
+    <h1>Carregando ...</h1>
   </div>
+</div>
 
-</section>
+

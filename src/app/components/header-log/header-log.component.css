@@ -1,20 +1,11 @@
 header{
   width: 100%;
   height: 12vh;
-  background-color: #e8eaee;
+  background-color: #354b5d;
   display: flex;
   justify-content: space-between;
   color: black;
   align-items: center;
-}
-#ima{
-  width: 250px;
-  background-color: #131B2B;
-  border-radius: 20px;
-  height: 90%;
-  display: flex;
-  justify-content: center;
-  margin-left: 2%;
 }
 #user-icon{
   width: 50px;
@@ -24,6 +15,7 @@ header{
 }
 #user-content{
   display: flex;
+  border: 1px solid #e9e9d0;
   align-items: center;
   gap:20px;
   margin-right: 50px;
@@ -32,7 +24,10 @@ header{
   transition: ease all 0.5s;
 }
 #user-content:hover{
-  background-color:rgba(106, 137, 165, 0.692);
+  p{
+    color: #354b5d;
+  }
+  background-color:#e9e9d0;
   cursor: pointer;
 }
 #content{

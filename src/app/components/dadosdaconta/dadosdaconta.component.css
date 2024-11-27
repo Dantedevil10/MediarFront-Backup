@@ -1,10 +1,10 @@
 #content-ac{
-  background-color: white;
+  background-color: #131b2b6c;
   width: 80%;
 
 }
 section{
-  background-color: rgba(218, 222, 224, 0.438);
+  background-color: #354b5d;
   min-height: 100vh;
 }
 #g-c{
@@ -29,16 +29,19 @@ input{
   margin-bottom: 5%;
   padding: 10px;
   width: 200%;
+  background-color: #354b5d;
+  border: none;
+
 }
 label{
   margin-bottom: 5%;
   padding: 10px;
-  color: rgba(0, 0, 0, 0.600);
+
 }
 #fb{
   padding: 10px;
   border: none;
-  background-color: rgba(255, 68, 0, 0.767);
+  background-color: #a5755b8f;
   color: white;
   border-radius: 3px;
   margin-left: 45%;
@@ -47,7 +50,7 @@ label{
   transition: all 0.5s;
 }
 #fb:hover{
-  background-color: rgba(255, 68, 0, 1);
+  background-color: #a5755b;
 }
 #let p {
   font-size: 0.9rem;
@@ -145,6 +148,8 @@ label{
 select{
   padding: 10px;
   width: 211.5%;
+  background: #354b5d;
+  border: none;
 }
 #t{
   margin-top: 15%;

@@ -11,23 +11,25 @@ import { Observable } from 'rxjs';
 })
 export class ServiceUService {
 
-  private defaultGateway = 'https://backmediartestes-production.up.railway.app/userCom/';
-  private defaultMediador = 'https://backmediartestes-production.up.railway.app/userMedi/'
-  private processosGateway = 'https://backmediartestes-production.up.railway.app/processos/';
+  //http://localhost:8080
 
-  private mensagensGateway = 'https://backmediartestes-production.up.railway.app/mensagens';
-  private enviarmensagem = 'https://backmediartestes-production.up.railway.app/mensagens/enviar'
+  private defaultGateway = 'http://localhost:8080/userCom/';
+  private defaultMediador = 'http://localhost:8080/userMedi/'
+  private processosGateway = 'http://localhost:8080/processos/';
 
-  private processosUrl = 'https://backmediartestes-production.up.railway.app/processos/criarProcesso';
+  private mensagensGateway = 'http://localhost:8080/mensagens';
+  private enviarmensagem = 'http://localhost:8080/mensagens/enviar'
 
-  private criarUser = 'https://backmediartestes-production.up.railway.app/userCom/criarUsuario';
-  private criarmediador = 'https://backmediartestes-production.up.railway.app//userMedi/criarMedi';
+  private processosUrl = 'http://localhost:8080/processos/criarProcesso';
 
-  private editarUser = 'https://backmediartestes-production.up.railway.app/userCom/editar'
-  private editarmediador = 'https://backmediartestes-production.up.railway.app/userMedi/editarMedi'
+  private criarUser = 'http://localhost:8080/userCom/criarUsuario';
+  private criarmediador = 'http://localhost:8080//userMedi/criarMedi';
+
+  private editarUser = 'http://localhost:8080/userCom/editar'
+  private editarmediador = 'http://localhost:8080/userMedi/editarMedi'
 
   /////////////////////////////////////////////////////////////////////////////// teste Login
-  private apiUrl = 'https://backmediartestes-production.up.railway.app/auth/login';
+  private apiUrl = 'http://localhost:8080/auth/login';
   ///////////////////////////////////////////////////////////////////////////////
 
   constructor(private http: HttpClient) {}
@@ -36,7 +38,7 @@ export class ServiceUService {
     return this.http.post<any>(this.apiUrl, { cpf, senha });
   }
   getMensagens(usuarioId: string, contatoId: string): Observable<Mensagem[]> {
-    return this.http.get<Mensagem[]>(`https://backmediartestes-production.up.railway.app/mensagens/conversa/${usuarioId}/${contatoId}`);
+    return this.http.get<Mensagem[]>(`http://localhost:8080/mensagens/conversa/${usuarioId}/${contatoId}`);
   }
 
 
