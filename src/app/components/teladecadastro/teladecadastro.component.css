@@ -3,7 +3,16 @@
 section{
   background-color: #131B2B;
   color: white;
-  height: 100vh;
+  min-height: 100vh;
+}
+select{
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  color: black;
+  option{
+    color: black;
+  }
 }
 u{
   cursor: pointer;
@@ -29,6 +38,7 @@ h1{
   border: none;
   border-radius: 10px;
   padding: 10px;
+  color: black;
 }
 .final-btn{
   border: none;

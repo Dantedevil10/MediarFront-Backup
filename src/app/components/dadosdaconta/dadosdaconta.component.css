@@ -116,6 +116,7 @@ label{
   top: -25%;
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.349);
+  backdrop-filter: blur(10px);
 }
 #tr{
   position: fixed;
@@ -125,7 +126,8 @@ label{
   top: 30%;
   z-index: 2;
   border-radius: 4px;
-  background-color: rgb(255, 255, 255);
+  background-color: #131B2B;
+  border: 1px solid #e9e9d0 ;
 }
 #dec{
   display: flex;

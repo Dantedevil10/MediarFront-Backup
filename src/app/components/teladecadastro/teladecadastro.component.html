@@ -9,8 +9,8 @@
 
     <div id="cad-box" *ngIf="!choosed">
       <h2 style="padding-left: 10px;">Que Tipo de Conta Você Deseja Criar ?</h2>
-        <button value="NORMAL" #normal (click)="accounttype(normal.value)">Conta Comum</button>
-        <button value="MEDIADOR" #mediador (click)="accounttype(mediador.value)">Eu Sou Um Mediador</button>
+        <button value="NORMAL" #normal (click)="accounttype(normal.value)" style="color: black;">Conta Comum</button>
+        <button value="MEDIADOR" #mediador (click)="accounttype(mediador.value)" style="color: black;">Eu Sou Um Mediador</button>
     </div>
 
     <div class="cad-con" *ngIf="choosed && acountD == 'NORMAL'">
@@ -36,26 +36,41 @@
 
     <div class="cad-con" *ngIf="choosed && acountD=='MEDIADOR' ">
       <label for="nome">Digite seu nome Como Mediador</label>
-      <input id="nome" type="text" placeholder="Seu Nome Não Pode Ser Fictício"/>
+      <input id="nome" [(ngModel)]="mediador.nomeUsuario" type="text" placeholder="Seu Nome Não Pode Ser Fictício"/>
 
       <label for="cpf">Digite Seu CPF</label>
-      <input id="cpf" type="text" placeholder="CPF"/>
+      <input id="cpf" [(ngModel)]="mediador.cpf" type="text" placeholder="CPF"/>
 
       <label for="senha">Crie Uma Senha</label>
-      <input id="senha" type="text" placeholder="Crie Uma Senha De Alta Complexidade"/>
+      <input id="senha" [(ngModel)]="mediador.senha" type="text" placeholder="Crie Uma Senha De Alta Complexidade"/>
 
-      <label for="nascimento">Qual a Sua Data de Nascimento ?</label>
-      <input id="nascimento" type="date"/>
+      <label for="nascimento">Qual a Sua Cidade de Atuação ?</label>
+      <input id="nascimento" [(ngModel)]="mediador.cidadeAtuacao" type="text"/>
+
+      <label for="nascimento">Qual a Seu Email ?</label>
+      <input id="nascimento" [(ngModel)]="mediador.email" type="text"/>
+
+      <label for="nascimento">Qual Seu Titulo de Graduação ?</label>
+      <select [(ngModel)]="mediador.titulacaoGraduacao" name="" id="n">
+        <option value="Doutorado">Doutorado</option>
+        <option value="Mestrado">Mestrado</option>
+        <option value="Tecnólogo">Tecnólogo</option>
+        <option value="Graduação">Graduação</option>
+        <option value="Ensino Médio">Ensino Médio</option>
+      </select>
+
+      <label for="nascimento">Em Qual Tribunal Você Atua ?</label>
+      <select [(ngModel)]="mediador.tribunalAtuacao" name="" id="t">
+        <option value="TODOS">Todos</option>
+        <option value="ESTADUAL">Estadual</option>
+        <option value="FEDERAL">Federal</option>
+      </select>
 
       <p>Escolheu a Conta Errada ? <u (click)="backtochoose()">Clique Aqui</u></p>
 
-      <button class="final-btn">Criar Minha Conta</button>
+      <button class="final-btn" (click)="criarMediador()">Criar Minha Conta</button>
     </div>
 
   </main>
-
-  <footer>
-
-  </footer>
 
 </section>

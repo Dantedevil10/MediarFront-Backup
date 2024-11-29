@@ -1,6 +1,6 @@
 import { ServiceUService } from './../../services/service-u.service';
 import { Component } from '@angular/core';
-import { Usuario, UsuarioCri } from '../../models/modelos.model';
+import { MediadorCri, Usuario, UsuarioCri } from '../../models/modelos.model';
 import { Router } from '@angular/router';
 
 
@@ -14,6 +14,16 @@ export class TeladecadastroComponent {
   choosed:boolean = false;
   acountD:string = ''; //Essa Variavel Vai Guardar o valor do tipo de conta
   user: Usuario | null = null; // Para armazenar os dados do usuário
+
+  mediador : MediadorCri = {
+    senha: '',
+    cpf: '',
+    email: '',
+    nomeUsuario: '',
+    tribunalAtuacao: '',
+    cidadeAtuacao: '',
+    titulacaoGraduacao: '',
+  }
 
   usuario : UsuarioCri = {
     email: '',
@@ -39,14 +49,27 @@ export class TeladecadastroComponent {
   criarUsuario(){
     this.serviceUService.criarUsuario(this.usuario).subscribe({
       next:(data)=>{
-        alert('Usuario criado com sucesso!' + data);
+        alert('Usuario criado com sucesso!');
 
         // Redireciona para a página de Login do usuário
         this.router.navigate([`/login`]);
 
       },
-      error:(error)=>{
-        alert('Erro ao criar processo:'+ error);
+      error:(err)=>{
+        alert('Erro ao criar Usuario');
+        console.log(err)
+      }
+    });
+  }
+  criarMediador(){
+    this.serviceUService.criarMediador(this.mediador).subscribe({
+      next:(data)=>{
+        alert('Mediador criado com sucesso!');
+        this.router.navigate([`/login`]);
+      },
+      error:(err)=>{
+        alert('Erro ao criar Usuario');
+        console.log(err)
       }
     });
   }

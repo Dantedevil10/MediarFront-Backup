@@ -22,8 +22,8 @@
             <option value="Não">Não</option>
           </select>
         </div>
-        <div class="fi" >
-          <label for="autor" *ngIf="media">Pesquisar Pelo Nome do Autor</label>
+        <div class="fi" *ngIf="media">
+          <label for="autor" >Pesquisar Pelo Nome do Autor</label>
           <input id="autor" type="text" [(ngModel)]="filtroNomeAutor" placeholder="Digite o Nome do Autor">
         </div>
         <div class="fi" *ngIf="media">

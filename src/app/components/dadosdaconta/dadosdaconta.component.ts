@@ -10,10 +10,12 @@ import { Mediador, MediadorCri, Usuario, UsuarioCri } from '../../models/modelos
 })
 export class DadosdacontaComponent {
   user: Usuario | Mediador | null = null; // Armazena os dados do usuário com tipagem correta
-  errorMessage: string | null = null; // Para armazenar mensagens de erro, se necessário
 
   trigger:boolean = false;
   senhaVelha = '';
+  senhaNova = '';
+  originalMediador: MediadorCri | null = null;
+  originalUsuario: UsuarioCri | null = null;
 
   mediador : MediadorCri = {
     senha: '',
@@ -45,15 +47,17 @@ export class DadosdacontaComponent {
         // Busca os dados do usuário usando o serviço
         await this.serviceUService.DadosUsers(userId).subscribe({
           next: (data) => {
-            this.user = data; // Armazena os dados do usuário
+            this.user = data;
             this.usuario.cpf = data.cpf;
             this.usuario.email = data.email;
-            // this.usuario.senha = data.senha;
             this.usuario.nomeUsuario = data.nomeUsuario;
+
+            this.usuario = { ...data }; // Carrega os dados do mediador
+            this.originalUsuario = { ...data }; // Faz uma cópia dos dados originais
           },
           error: (err) => {
             console.error(err);
-            this.errorMessage = 'Erro ao carregar dados do usuário'; // Define mensagem de erro
+            console.log('Erro ao carregar dados do usuário');
           }
         });
         //Caso o Usuario não for encontrado, um Usuario do tipo Mediador Será Buscado
@@ -62,11 +66,13 @@ export class DadosdacontaComponent {
             this.user = data;
             this.mediador.cpf = data.cpf;
             this.mediador.email = data.email;
-            // this.mediador.senha = data.senha;
             this.mediador.nomeUsuario = data.nomeUsuario;
             this.mediador.tribunalAtuacao = data.tribunalAtuacao;
             this.mediador.cidadeAtuacao = data.cidadeAtuacao;
             this.mediador.titulacaoGraduacao = data.titulacaoGraduacao;
+
+            this.mediador = { ...data }; // Carrega os dados do mediador
+            this.originalMediador = { ...data }; // Faz uma cópia dos dados originais
           },
           error:(err)=>{
             console.log('Erro ao Carregar Dados')
@@ -99,38 +105,53 @@ export class DadosdacontaComponent {
       this.usuario.senha = this.user?.senha
     }
 
-    this.serviceUService.editarUsuario(this.usuario,this.user?.id).subscribe({
-      next:(data)=>{
-        alert('Dados Atualizado');
-      },
-      error:(error)=>{
-        alert('Erro ao Tentar Salvar Dados')
-      }
-    })
+    if (JSON.stringify(this.usuario) !== JSON.stringify(this.originalUsuario)){
+      this.serviceUService.editarUsuario(this.usuario,this.user?.id).subscribe({
+        next:(data)=>{
+          alert('Dados Atualizado');
+          window.location.reload();
+        },
+        error:(error)=>{
+          alert('Erro ao Tentar Salvar Dados')
+        }
+      })
+    }else{
+      alert('Alteração não realizada, dados não alterados');
+    }
   }
 
   editarMediador(){
+
     if(this.user?.senha){
       this.mediador.senha = this.user?.senha
     }
 
-    this.serviceUService.editarMediador(this.mediador,this.user?.id).subscribe({
-      next:(data)=>{
-        alert('Dados Atualizado');
-      },
-      error:(error)=>{
-        alert('Erro ao Tentar Salvar Dados')
-      }
-    })
+    if (JSON.stringify(this.mediador) !== JSON.stringify(this.originalMediador)) {
+      // Só chama o serviço se os dados forem diferentes
+      this.serviceUService.editarMediador(this.mediador, this.user?.id).subscribe({
+        next: (data) => {
+          alert('Dados atualizados');
+          window.location.reload();
+        },
+        error: (error) => {
+          alert('Erro ao tentar salvar dados');
+        },
+      });
+    } else {
+      alert('Alteração não realizada, dados não alterados');
+    }
+
   }
 
   editarSenha(){
     if(this.senhaVelha != this.user?.senha){
       alert('Senha Antiga Inválida')
     }else{
+      this.usuario.senha == this.senhaNova
       this.serviceUService.editarUsuario(this.usuario,this.user?.id).subscribe({
         next:(data)=>{
           alert('Senha Atualizada');
+          window.location.reload();
         },
         error:(error)=>{
           alert('Erro ao Tentar Salvar Dados')
@@ -143,9 +164,11 @@ export class DadosdacontaComponent {
     if(this.senhaVelha != this.user?.senha){
       alert('Senha Antiga Inválida')
     }else{
+      this.mediador.senha = this.senhaNova
       this.serviceUService.editarMediador(this.mediador,this.user?.id).subscribe({
         next:(data)=>{
           alert('Senha Atualizada');
+          window.location.reload();
         },
         error:(error)=>{
           alert('Erro ao Tentar Salvar Dados')

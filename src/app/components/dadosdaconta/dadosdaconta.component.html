@@ -16,7 +16,7 @@
       <div id="c-l">
         <h1 style="padding-bottom: 1%;">Meu Perfil</h1>
         <p style="padding-bottom: 1%;">Gerencie a sua Conta</p>
-        <hr style="background-color: rgb(231, 25, 25);">
+        <hr>
       </div>
       <div id="u-c">
         <div style="align-items: end;">
@@ -35,7 +35,7 @@
           <p id="cpf" *ngIf="user" style="margin-top: 10px;">{{ formatarCpf(user.cpf) }}</p>
           <p id="tipo" style="margin-top: 26px;">{{user?.tipoDeConta}}</p>
         </div>
-        <div *ngIf="user?.tipoDeConta == 'MEDIADOR' ">
+        <div *ngIf="user?.tipoDeConta == 'MEDIADOR'" style="margin-top: 0.5%;">
           <input type="text" [(ngModel)]="mediador.nomeUsuario" value="{{user?.nomeUsuario}}" id="nome">
           <input type="text" [(ngModel)]="mediador.email" value="{{user?.email}}" id="email">
           <p id="cpf" *ngIf="user" style="margin-top: 10px;">{{ formatarCpf(user.cpf) }}</p>
@@ -53,8 +53,6 @@
             <option value="Graduação">Graduação</option>
             <option value="Ensino Médio">Ensino Médio</option>
           </select>
-
-
         </div>
       </div>
       <button *ngIf="user?.tipoDeConta == 'USUARIO' " id="fb" (click)="editarUsuario()">Gravar Dados</button>
@@ -69,7 +67,7 @@
         <input class="ka" style="width:97%;padding: 10px;border: 1px solid grey;border-radius: 5px;"
          type="text" [(ngModel)]="senhaVelha" id="iden" >
         <label class="out" style="font-size: 1.1rem;" for="iden">Digite uma Nova Senha :</label>
-        <input class="ka" [(ngModel)]="usuario.senha" style="width:97%;padding: 10px;border: 1px solid grey;border-radius: 5px;"
+        <input class="ka" [(ngModel)]="senhaNova" style="width:97%;padding: 10px;border: 1px solid grey;border-radius: 5px;"
          type="text" id="iden" >
       </div>
       <div *ngIf="user?.tipoDeConta == 'MEDIADOR' " style="display: flex;flex-direction: column;margin: 10px;">
@@ -77,7 +75,7 @@
         <input class="ka" style="width:97%;padding: 10px;border: 1px solid grey;border-radius: 5px;"
          type="text" [(ngModel)]="senhaVelha" id="iden" >
         <label class="out" style="font-size: 1.1rem;" for="iden">Digite uma Nova Senha :</label>
-        <input class="ka" [(ngModel)]="mediador.senha" style="width:97%;padding: 10px;border: 1px solid grey;border-radius: 5px;"
+        <input class="ka" [(ngModel)]="senhaNova" style="width:97%;padding: 10px;border: 1px solid grey;border-radius: 5px;"
          type="text" id="iden" >
       </div>
       <div id="dec" *ngIf="user?.tipoDeConta == 'USUARIO' ">

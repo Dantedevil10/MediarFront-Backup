@@ -52,8 +52,8 @@ header{
 
 #dropdown-menu {
   position: absolute;
-  background-color: white;
-  border: 1px solid #ccc;
+  background-color: #354b5d ;
+  border: 1px solid #e9e9d0;
   border-radius: 5px;
   padding: 20px;
   display: flex;
@@ -66,7 +66,7 @@ header{
 
 #dropdown-menu a {
   text-decoration: none;
-  color: #131B2B;
+  color: #e9e9d0;
   padding: 10px;
 }
 
