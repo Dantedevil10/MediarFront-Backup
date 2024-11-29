@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ServiceUService } from '../../services/service-u.service';
 import { Mediador, Usuario } from './../../models/modelos.model'; // Importe a interface de usuário
 
+
 @Component({
   selector: 'app-header-log',
   templateUrl: './header-log.component.html',
@@ -13,9 +14,10 @@ export class HeaderLogComponent {
   user: Usuario | Mediador | null = null; // Armazena os dados do usuário com tipagem correta
   errorMessage: string | null = null; // Para armazenar mensagens de erro, se necessário
 
+
   constructor(
     private route: ActivatedRoute,
-    private serviceUService: ServiceUService
+    private serviceUService: ServiceUService,
   ) {}
 
   ngOnInit() {

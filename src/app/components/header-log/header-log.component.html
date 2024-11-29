@@ -4,17 +4,16 @@
   </div>
 
   <div id="content">
-    <img id="fo" routerLink="/noti" style="margin-top: 10px;cursor: pointer;" src="assets/icons/3239958.png" width="35px" height="35px">
 
     <div id="user-content" (click)="toggleMenu()">
       <p>{{user?.nomeUsuario}}</p>
-      <div id="user-icon"></div>
+      <div id="user-icon">{{ user?.nomeUsuario?.charAt(0) | uppercase }}</div>
     </div>
 
     <!-- Menu Dropdown -->
     <div id="dropdown-menu" *ngIf="isMenuOpen">
       <a routerLink="/dadosdaconta/{{user?.id}}">Dados Da Conta</a>
-      <a routerLink="#">Sair</a>
+      <a routerLink="/">Sair</a>
     </div>
 
   </div>

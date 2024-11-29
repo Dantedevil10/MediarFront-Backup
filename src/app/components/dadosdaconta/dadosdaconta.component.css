@@ -1,10 +1,10 @@
 #content-ac{
-  background-color: #131b2b6c;
+  background-color: #354b5d;
   width: 80%;
 
 }
 section{
-  background-color: #354b5d;
+  background-color: #131B2B;
   min-height: 100vh;
 }
 #g-c{
@@ -29,7 +29,7 @@ input{
   margin-bottom: 5%;
   padding: 10px;
   width: 200%;
-  background-color: #354b5d;
+  background-color: #547591;
   border: none;
 
 }
@@ -148,7 +148,7 @@ label{
 select{
   padding: 10px;
   width: 211.5%;
-  background: #354b5d;
+  background: #547591;
   border: none;
 }
 #t{

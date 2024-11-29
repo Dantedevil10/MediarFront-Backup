@@ -1,0 +1,33 @@
+<app-header-log></app-header-log>
+
+<section>
+  <h1 style="padding: 20px;">Conheça Nossos Mediadores</h1>
+  <div id="na" >
+    <div class="ou" *ngFor="let item of Mediador" (click)="MediadorSelecionado(item.id)" (click)="abrirCaixaEnviar()">
+      <div id="out">{{item.nomeUsuario.charAt(0)}}</div>
+      <div id="in">
+        Mediador : {{item.nomeUsuario}} <br/>
+        Email : {{item.email}}  <br/>
+        Tribunal De Atuação : {{item.tribunalAtuacao}}  <br/>
+        Nível de Graduação : {{item.titulacaoGraduacao}}  <br/>
+        Cidade de Atuação : {{item.cidadeAtuacao}}
+      </div>
+    </div>
+  </div>
+
+  <div id="oua" *ngIf="Selecionado">
+    <div id="tu">
+      <p style="margin: 5px; color: #e9e9d0 ;">* Depois de Enviar esta mensagem, o Mediador que você contatou estará disponível na sua aba de mensagens</p> <br/>
+      <div style="display: flex;flex-direction: column;margin: 10px;">
+        <label style="font-size: 1.1rem;color: #e9e9d0 ;" for="iden">Digite a Sua Mensagem Inicial</label>
+        <input style="width:97%;padding: 10px;border: 1px solid grey;border-radius: 5px;margin-top: 5px; color: black;"
+          type="text" id="iden" [(ngModel)]="enviarMen.conteudo">
+      </div>
+      <div id="dec">
+        <button style="background-color: rgba(255, 0, 0, 0.63);" (click)="abrirCaixaEnviar()">Cancelar</button>
+        <button style="background-color: #bb9b82;" (click)="enviarMensagemPrimeirVez()">Continuar</button>
+      </div>
+    </div>
+  </div>
+
+</section>

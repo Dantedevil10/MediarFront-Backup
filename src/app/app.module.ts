@@ -18,6 +18,7 @@ import { HomeLogComponent } from './pagina/home-log/home-log.component';
 import { NotificacaoComponent } from './pagina/notificacao/notificacao.component';
 import { SobreNosComponent } from './pagina/sobre-nos/sobre-nos.component';
 import { TeladeandamentoComponent } from './pagina/teladeandamento/teladeandamento.component';
+import { ListaMediaComponent } from './components/lista-media/lista-media.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { TeladeandamentoComponent } from './pagina/teladeandamento/teladeandamen
     HomeLogComponent,
     NotificacaoComponent,
     SobreNosComponent,
-    TeladeandamentoComponent
+    TeladeandamentoComponent,
+    ListaMediaComponent
   ],
   imports: [
     BrowserModule,

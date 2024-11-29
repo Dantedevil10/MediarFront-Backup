@@ -17,6 +17,8 @@ export class ServiceUService {
   private defaultMediador = 'https://backmediartestes-production.up.railway.app/userMedi/'
   private processosGateway = 'https://backmediartestes-production.up.railway.app/processos/';
 
+  private allmediador = 'https://backmediartestes-production.up.railway.app/userMedi'
+
   private mensagensGateway = 'https://backmediartestes-production.up.railway.app/mensagens';
   private enviarmensagem = 'https://backmediartestes-production.up.railway.app/mensagens/enviar'
 
@@ -50,6 +52,9 @@ export class ServiceUService {
   }
   DadosMediador(id: string): Observable<Mediador> {
     return this.http.get<Mediador>(`${this.defaultMediador}${id}`);
+  }
+  PegarTodosMediadores():Observable<Mediador[]>{
+    return this.http.get<Mediador[]>(this.allmediador)
   }
 
   // Método para obter todas as mensagens, agora tipado com uma lista de 'Mensagem'

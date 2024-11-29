@@ -1,22 +1,7 @@
 <app-header-log></app-header-log>
-<section style="background: #354b5d;min-height: 88vh;">
-  <!-- <header>
-    <nav id="nav">
-      <div class="logo">
-        <img src="/assets/Images/Prancheta 1.png" alt="">
-      </div>
-      <div id="nav-user">
-        <img src="/assets/Images/74472.png" alt="user-icon">
-        <span>{{ user?.nomeUsuario || media?.nomeUsuario}}</span>
-      </div>
-    </nav>
-  </header> -->
+<section style="background: #131B2B;min-height: 88vh;">
 
   <main>
-    <!-- <div id="butn">
-      <img routerLink="/home-log/{{user?.id || media?.id}}" src="assets/icons/undo_15093184.png" width="40px">
-      <b routerLink="/home-log/{{user?.id || media?.id}}">Voltar</b>
-    </div> -->
 
     <div id="main-content">
       <div id="filtro">
@@ -37,11 +22,11 @@
             <option value="Não">Não</option>
           </select>
         </div>
-        <div class="fi">
-          <label for="autor">Pesquisar Pelo Nome do Autor</label>
+        <div class="fi" >
+          <label for="autor" *ngIf="media">Pesquisar Pelo Nome do Autor</label>
           <input id="autor" type="text" [(ngModel)]="filtroNomeAutor" placeholder="Digite o Nome do Autor">
         </div>
-        <div class="fi">
+        <div class="fi" *ngIf="media">
           <label for="cpfAutor">Pesquisar Pelo CPF do Autor</label>
           <input id="cpfAutor" type="text" [(ngModel)]="filtroCpfAutor" placeholder="Digite o CPF do Autor" maxlength="11">
         </div>

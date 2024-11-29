@@ -1,8 +1,17 @@
-#ca{
-  width: 100%;
+
+#contact{
+
+  padding: 10px;
+  border-radius: 100%;
+  width: 15%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e9e9d0;
 }
 section{
-  background-color: #354b5d;
+  background-color: #131B2B ;
   overflow: hidden;
   height: 100vh;
 }
@@ -153,7 +162,7 @@ nav{
   display: flex;
   justify-content: space-between;
   padding: 20px;
-  background-color: #131b2b4b;
+  background-color: #354b5d ;
 
 }
 
@@ -180,6 +189,7 @@ nav{
 .my-message {
   background-color: #131B2B;
   border-radius: 10px;
+  border: 1px solid #e9e9d0;
   color: white;
   text-align: left;
   width: fit-content;
@@ -200,7 +210,7 @@ nav{
 }
 
 #footer-area{
-  background-color: #131b2b4b;
+  background-color: #354b5d ;
   height: 70px;
   display: flex;
   align-items: center;
@@ -208,7 +218,7 @@ nav{
   gap: 50px;
 }
 #ca{
-  background: #757d8f;
+  background: #496983 ;
   overflow-wrap: break-word;
   padding: 10px;
   width: 700px;

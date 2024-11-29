@@ -1,9 +1,5 @@
 <app-header-log></app-header-log>
 <section>
-  <!-- <div routerLink="/home-log/{{user?.id}}" id="butn">
-    <img routerLink="/home-log/{{user?.id}}" src="assets/icons/undo_15093184.png" width="40px">
-    <b routerLink="/home-log/{{user?.id}}">Voltar</b>
-  </div> -->
   <div id="all-content" >
     <div id="left">
       <div id="people">
@@ -12,7 +8,7 @@
         </div>
         <div id="contact-people" *ngFor="let item of user?.contatos" (click)="contatoSelect(item.contato.nomeUsuario,item.contato.id)">
           <div id="contact">
-              <img src="assets/icons/account_2040484.png" alt="user" height="30px">
+            {{ item.contato.nomeUsuario?.charAt(0) | uppercase }}
           </div>
           <div id="info">
             <div id="info-separator">
@@ -36,7 +32,7 @@
       <nav *ngIf="contatoSelecionado && selecionado">
 
         <div id="separator">
-          <img src="assets/icons/account_2040484.png" alt="" height="45px">
+         
           <div id="name-status">
             <label for="img" style="font-size: 1.5rem;">{{contatoSelecionado}}</label>
             <h5>status</h5>

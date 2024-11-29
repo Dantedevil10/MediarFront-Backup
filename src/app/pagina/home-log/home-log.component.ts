@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
 import { ServiceUService } from '../../services/service-u.service';
-import { Mediador, Usuario } from './../../models/modelos.model'; // Importe a interface de usuário
+import { Mediador, Usuario } from '../../models/modelos.model'; // Importe a interface de usuário
 
 @Component({
   selector: 'app-home-log',

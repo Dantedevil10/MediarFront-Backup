@@ -12,6 +12,8 @@ import { DadosdacontaComponent } from './components/dadosdaconta/dadosdaconta.co
 import { ChatcomiaComponent } from './pagina/chatcomia/chatcomia.component';
 import { TelademensagemComponent } from './components/telademensagem/telademensagem.component';
 import { HomePrincipalComponent } from './components/home-principal/home-principal.component';
+import { ListaMediaComponent } from './components/lista-media/lista-media.component';
+
 
 const routes: Routes = [
   { path: 'cadastro', component: TeladecadastroComponent},
@@ -24,6 +26,7 @@ const routes: Routes = [
   { path: 'historico/:id', component: HistoricoComponent},
   { path: 'dadosdaconta/:id', component: DadosdacontaComponent},
   { path: 'chatIa', component: ChatcomiaComponent},
+  { path: 'lista/:id', component: ListaMediaComponent},
   { path: 'mensagens/:id', component: TelademensagemComponent}, // Tela-mensagens: parte do chat.
   { path: '**', component: HomePrincipalComponent },// Rota Principal Caso O Caminho Não Seja Encontrado
 ];
