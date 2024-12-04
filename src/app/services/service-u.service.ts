@@ -18,6 +18,7 @@ export class ServiceUService {
   private processosGateway = 'https://backmediartestes-production.up.railway.app/processos/';
 
   private allmediador = 'https://backmediartestes-production.up.railway.app/userMedi'
+  private allusers = 'https://backmediartestes-production.up.railway.app/userCom'
 
   private mensagensGateway = 'https://backmediartestes-production.up.railway.app/mensagens';
   private enviarmensagem = 'https://backmediartestes-production.up.railway.app/mensagens/enviar'
@@ -55,6 +56,9 @@ export class ServiceUService {
   }
   PegarTodosMediadores():Observable<Mediador[]>{
     return this.http.get<Mediador[]>(this.allmediador)
+  }
+  PegarTodosUsuarios():Observable<Usuario[]>{
+    return this.http.get<Usuario[]>(this.allusers)
   }
 
   // Método para obter todas as mensagens, agora tipado com uma lista de 'Mensagem'

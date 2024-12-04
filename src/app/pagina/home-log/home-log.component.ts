@@ -66,9 +66,12 @@ export class HomeLogComponent {
 
   abrirCaixaProcesso() {
     this.trigger = !this.trigger;  // Alterna o valor de trigger
+    this.numeroProcesso = ''
   }
   abrirCaixaEnviar() {
     this.triggerM = !this.triggerM;  // Alterna o valor de trigger
+    this.mensagem.destinatario = '';
+    this.mensagem.conteudo = '';
   }
 
   irParaAndamento() {
@@ -81,16 +84,20 @@ export class HomeLogComponent {
   }
 
   enviarMensagemPrimeirVez(){
-    this.serviceUService.enviarMensagem(this.mensagem).subscribe({
-      next:(data)=>{
-        alert('Mensagem Enviada, Cheque suas mensagens')
-        console.log(data)
-      },
-      error:(err)=>{
-        alert('Erro ao enviar Mensagem')
-        console.log(err)
-      }
-    })
+    if(this.mensagem.destinatario && this.mensagem.conteudo){
+      this.serviceUService.enviarMensagem(this.mensagem).subscribe({
+        next:(data)=>{
+          alert('Mensagem Enviada, Cheque suas mensagens')
+          console.log(data)
+        },
+        error:(err)=>{
+          alert('Erro ao enviar Mensagem')
+          console.log(err)
+        }
+      })
+    }else{
+      alert('Os Campos Não Foram Preenchidos')
+    }
   }
 
 }

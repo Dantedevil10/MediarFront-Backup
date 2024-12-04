@@ -91,6 +91,9 @@
   background-color: #d86a30;
   color: white;
 }
+input{
+  color: black;
+}
 
 #ou{
   margin-top: 100px;
@@ -104,6 +107,7 @@
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.349);
   transition: all ease 0.5s;
+  backdrop-filter: blur(10px);
 }
 #tr{
   position: fixed;
@@ -113,7 +117,8 @@
   top: 35%;
   z-index: 2;
   border-radius: 4px;
-  background-color: rgb(255, 255, 255);
+  background-color: #131B2B ;
+  border: 1px solid #e9e9d0;
 }
 #dec{
   display: flex;
@@ -135,7 +140,9 @@
   top: 25%;
   z-index: 2;
   border-radius: 4px;
-  background-color: rgb(255, 255, 255);
+  background-color:#131B2B ;
+  border: 1px solid #e9e9d0;
+
 }
 #ca{
   width: 50%;

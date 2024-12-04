@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ServiceUService } from '../../services/service-u.service';
@@ -10,9 +11,14 @@ import { Mediador, Mensagem, Usuario } from '../../models/modelos.model';
 })
 export class ListaMediaComponent {
   Mediador : Mediador[] | null = [];
+  Usuario : Usuario[] | null = [];
+
   User : Mediador | Usuario | null = null;
   EnviarMensagem:boolean = false
   Selecionado:boolean = false
+
+  inputpesq:string=""
+  pesquisa:string=""
 
   enviarMen = {
     remetente: '',
@@ -30,6 +36,14 @@ export class ListaMediaComponent {
     this.service.PegarTodosMediadores().subscribe({
       next:(data)=>{
         this.Mediador = data;
+      },
+      error:(err)=>{
+        console.log(err)
+      }
+    })
+    this.service.PegarTodosUsuarios().subscribe({
+      next:(data)=>{
+        this.Usuario = data;
       },
       error:(err)=>{
         console.log(err)
@@ -63,6 +77,14 @@ export class ListaMediaComponent {
       }catch(err){
         console.log(err)
       }
+    }
+  }
+
+  Pesquisar(){
+    if(this.inputpesq){
+      this.pesquisa=this.inputpesq
+    }else{
+      this.pesquisa=''
     }
   }
 

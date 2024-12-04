@@ -1,19 +1,44 @@
 <app-header-log></app-header-log>
 
 <section>
-  <h1 style="padding: 20px;">Conheça Nossos Mediadores</h1>
-  <div id="na" >
-    <div class="ou" *ngFor="let item of Mediador" (click)="MediadorSelecionado(item.id)" (click)="abrirCaixaEnviar()">
-      <div id="out">{{item.nomeUsuario.charAt(0)}}</div>
-      <div id="in">
-        Mediador : {{item.nomeUsuario}} <br/>
-        Email : {{item.email}}  <br/>
-        Tribunal De Atuação : {{item.tribunalAtuacao}}  <br/>
-        Nível de Graduação : {{item.titulacaoGraduacao}}  <br/>
-        Cidade de Atuação : {{item.cidadeAtuacao}}
+  <div *ngIf="User?.tipoDeConta == 'USUARIO'">
+    <h1 style="padding: 20px;">Conheça Nossos Mediadores</h1>
+    <div id="na" >
+      <div class="ou" *ngFor="let item of Mediador" (click)="MediadorSelecionado(item.id)" (click)="abrirCaixaEnviar()">
+        <div id="out">{{item.nomeUsuario.charAt(0)}}</div>
+        <div id="in">
+          Mediador : {{item.nomeUsuario}} <br/>
+          Email : {{item.email}}  <br/>
+          Tribunal De Atuação : {{item.tribunalAtuacao}}  <br/>
+          Nível de Graduação : {{item.titulacaoGraduacao}}  <br/>
+          Cidade de Atuação : {{item.cidadeAtuacao}}
+        </div>
       </div>
     </div>
   </div>
+  <div *ngIf="User?.tipoDeConta == 'MEDIADOR'">
+    <div style="padding: 4%;">
+      <label for="pes">Pesquise o Seu Usuario</label><br/><br/>
+      <input [(ngModel)]="inputpesq" (input)="Pesquisar()"
+      style="padding: 10px;background-color: transparent;border: 1px solid #e9e9d0;"
+      type="text" placeholder="Digite o Nome do Seu Usuario" id="pes">
+    </div>
+    <div id="na">
+      <div *ngFor="let item of Usuario">
+        <div class="ou" *ngIf="item.nomeUsuario.includes(inputpesq)"
+         (click)="MediadorSelecionado(item.id)" (click)="abrirCaixaEnviar()">
+          <div id="out">{{item.nomeUsuario.charAt(0)}}</div>
+          <div id="in">
+            ID : {{item.id}} <br>
+            Usuario : {{item.nomeUsuario}} <br/>
+            Email : {{item.email}}  <br/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
 
   <div id="oua" *ngIf="Selecionado">
     <div id="tu">

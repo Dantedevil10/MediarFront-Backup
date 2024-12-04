@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'noti', component: NotificacaoComponent},
   { path: 'historico/:id', component: HistoricoComponent},
   { path: 'dadosdaconta/:id', component: DadosdacontaComponent},
-  { path: 'chatIa', component: ChatcomiaComponent},
+  { path: 'chatIa/:id', component: ChatcomiaComponent},
   { path: 'lista/:id', component: ListaMediaComponent},
   { path: 'mensagens/:id', component: TelademensagemComponent}, // Tela-mensagens: parte do chat.
   { path: '**', component: HomePrincipalComponent },// Rota Principal Caso O Caminho Não Seja Encontrado

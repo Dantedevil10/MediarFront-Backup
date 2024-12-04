@@ -34,7 +34,7 @@
         <!-- <img src="assets/icons/text_2878671.png" width="70px"> -->
         <p>Histórico de Processos</p>
       </div>
-      <div class="btns" style="padding:20px;" routerLink="/chatIa">
+      <div class="btns" style="padding:20px;" routerLink="/chatIa/{{user.id}}">
         <p>Chat Com Inteligência Artificial</p>
       </div>
       <div class="btns" style="padding:20px;">
@@ -63,7 +63,7 @@
 </div>
 <div id="ou" *ngIf="triggerM">
   <div id="tu">
-    <p style="margin: 5px; color: rgba(0, 0, 0, 0.562);">* Depois de Enviar esta mensagem, o usuario que você contatou estará disponível na sua aba de mensagens</p>
+    <p style="margin: 5px; color: #e9e9d0 ;">* Depois de Enviar esta mensagem, o usuario que você contatou estará disponível na sua aba de mensagens</p>
     <div style="display: flex;flex-direction: column;margin: 10px;">
       <label style="font-size: 1.1rem;" for="iden">Digite o Numero de identificação(ID) do Usuario</label>
       <input style="width:97%;padding: 10px;border: 1px solid grey;border-radius: 5px;margin-top: 5px;"
@@ -74,7 +74,8 @@
     </div>
     <div id="dec">
       <button style="background-color: rgba(255, 0, 0, 0.63);" (click)="abrirCaixaEnviar()">Cancelar</button>
-      <button style="background-color: rgba(0, 128, 0, 0.616);" (click)="enviarMensagemPrimeirVez()">Continuar</button>
+      <button style="background-color: rgba(0, 128, 0, 0.616);" (click)="enviarMensagemPrimeirVez()">Continuar</button><p>Ou</p>
+      <button style="background-color: rgba(0, 128, 0, 0.616);" routerLink="/lista/{{user?.id}}">Encontrar Usuario Por Seu Nome</button>
     </div>
   </div>
 </div>

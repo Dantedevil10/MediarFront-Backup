@@ -24,8 +24,6 @@ export class AgendamentoComponent {
     emailAutor: ''
   }; // Para armazenar os dados do processo
 
-  errorMessage: string | null = null;
-
   constructor(
     private route: ActivatedRoute,
     private serviceUService: ServiceUService,
@@ -45,7 +43,6 @@ export class AgendamentoComponent {
         },
         error: (err) => {
           console.error(err);
-          this.errorMessage = 'Erro ao carregar dados do usuário';
         }
       });
     }
@@ -65,12 +62,11 @@ export class AgendamentoComponent {
         },
         error: (err) => {
           console.error('Erro ao criar processo:', err);
-          alert('Erro ao criar processo:'+ err);
-          this.errorMessage = 'Erro ao criar o processo';
+          alert('Erro ao criar processo');
         }
       });
     } else {
-      this.errorMessage = 'Por favor, preencha todos os campos obrigatórios.';
+      alert('Por favor, preencha todos os campos obrigatórios.');
     }
   }
 }

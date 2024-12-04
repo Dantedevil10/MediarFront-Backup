@@ -1,6 +1,6 @@
 section{
   min-height: 100vh;
-  background-color: rgba(218, 222, 224, 0.438);
+  background-color:#131B2B;
 }
 
 #butn{
@@ -34,7 +34,7 @@ section{
 
 .cad-con{
   box-shadow: 1px 1px 6px black;
-  background-color: rgba(218, 222, 224, 0.438);
+  background-color:#354b5d;
   width: 600px;
   padding: 10px;
   margin: auto;
@@ -48,8 +48,24 @@ section{
   border: none;
   border-radius: 10px;
   padding: 10px;
+  background: transparent;
+  border: 1px solid #e9e9d0;
+}
+input::placeholder{
+  color: #e9e9d0ad;
+}
+select{
+  background: #4f718d;
+  border: 1px solid #e9e9d0;
+}
+option{
+  background: #131B2B;
+}
+textarea{
+  background: #4f718d;
 
 }
+
 .final-btn{
   border: none;
   border-radius: 10px;

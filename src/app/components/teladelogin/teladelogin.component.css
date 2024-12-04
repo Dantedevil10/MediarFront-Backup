@@ -11,6 +11,9 @@ h1{
   margin: 20px;
   font-size: 3rem;
 }
+input{
+  color: black;
+}
 .cad-con{
   border: 1px solid white;
   width: 300px;
