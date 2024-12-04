@@ -8,9 +8,15 @@ import { Component,ElementRef, ViewChild } from '@angular/core';
 export class HomePrincipalComponent {
 
   @ViewChild('funcionamento', { static: false }) funcionamentoSection!: ElementRef;
+  @ViewChild('sobreNos', { static: false, read: ElementRef }) sobreNosSection!: ElementRef;
 
   scrollToFuncionamento() {
     this.funcionamentoSection.nativeElement.scrollIntoView({ behavior: 'smooth' });
+  }
+  scrollToSobrenos(){
+    if (this.sobreNosSection) {
+      this.sobreNosSection.nativeElement.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
 }

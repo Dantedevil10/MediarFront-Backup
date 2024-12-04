@@ -1,21 +1,21 @@
 <section id="pri">
   <header>
-      <nav id="nav-bar">
-          <div id="header-logo">
-              <img id="imagem" src="./assets/Images/Prancheta 1.png" alt="" width="200px">
-          </div>
-          <div id="header-a">
-              <ul>
-                  <li class="nav-item"><a style="cursor: pointer;" (click)="scrollToFuncionamento()" class="nav-link">Funcionamento</a></li>
-                  <li class="nav-item"><a routerLink="/login" class="nav-link">Serviços</a></li>
-                  <li class="nav-item"><a routerLink="/sobre-nos" class="nav-link">Sobre nós</a></li>
-              </ul>
-          </div>
-          <div id="header-button">
-              <button routerLink="/login">Login</button>
-              <button routerLink="/cadastro">Cadastrar</button>
-          </div>
-      </nav>
+    <nav id="nav-bar">
+      <div id="header-logo">
+        <img id="imagem" src="./assets/Images/Prancheta 1.png" alt="" width="200px">
+      </div>
+      <div id="header-a">
+        <ul>
+          <li class="nav-item"><a style="cursor: pointer;" (click)="scrollToFuncionamento()" class="nav-link">Funcionamento</a></li>
+          <li class="nav-item"><a routerLink="/login" class="nav-link">Serviços</a></li>
+          <li class="nav-item"><a style="cursor: pointer;" class="nav-link" (click)="scrollToSobrenos()">Sobre nós</a></li>
+        </ul>
+      </div>
+      <div id="header-button">
+        <button routerLink="/login">Login</button>
+        <button routerLink="/cadastro">Cadastrar</button>
+      </div>
+    </nav>
   </header>
   <main>
     <div id="main-content">
@@ -84,4 +84,5 @@
     </div>
 
   </div><!--fim da div OT-->
+  <app-sobre-nos #sobreNos ></app-sobre-nos>
 </section>
