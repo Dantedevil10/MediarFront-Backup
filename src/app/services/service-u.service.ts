@@ -26,7 +26,7 @@ export class ServiceUService {
   private processosUrl = 'https://backmediartestes-production.up.railway.app/processos/criarProcesso';
 
   private criarUser = 'https://backmediartestes-production.up.railway.app/userCom/criarUsuario';
-  private criarmediador = 'https://backmediartestes-production.up.railway.app//userMedi/criarMedi';
+  private criarmediador = 'https://backmediartestes-production.up.railway.app/userMedi/criarMedi';
 
   private editarUser = 'https://backmediartestes-production.up.railway.app/userCom/editar'
   private editarmediador = 'https://backmediartestes-production.up.railway.app/userMedi/editarMedi'
