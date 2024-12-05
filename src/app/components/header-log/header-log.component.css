@@ -75,3 +75,17 @@ header{
   border-radius: 5px;
   /* padding: 5px; */
 }
+
+
+@media (max-width: 768px) {
+  #user-content {
+    p{
+      display: none;
+    }
+    margin-left: 20%;
+    margin-top: 5%;
+  }
+  img{
+    width: 400%;
+  }
+}

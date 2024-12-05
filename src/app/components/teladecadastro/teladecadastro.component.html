@@ -18,7 +18,7 @@
       <input id="nome" [(ngModel)]="usuario.nomeUsuario" required="Preencha este Campo" type="text" placeholder="Seu Nome Não Pode Ser Fictício"/>
 
       <label for="cpf">Digite Seu CPF (Apenas Numeros)</label>
-      <input id="cpf" [(ngModel)]="usuario.cpf" type="text" maxlength="11" placeholder="CPF"/>
+      <input id="cpf" [(ngModel)]="usuario.cpf" type="text" placeholder="CPF (Somente Números)" [maxLength]="11"/>
 
       <label for="senha">Crie Uma Senha</label>
       <input id="senha" [(ngModel)]="usuario.senha" type="text" placeholder="Crie Uma Senha De Alta Complexidade"/>
@@ -39,7 +39,7 @@
       <input id="nome" [(ngModel)]="mediador.nomeUsuario" type="text" placeholder="Seu Nome Não Pode Ser Fictício"/>
 
       <label for="cpf">Digite Seu CPF</label>
-      <input id="cpf" [(ngModel)]="mediador.cpf" type="text" placeholder="CPF"/>
+      <input id="cpf" [(ngModel)]="mediador.cpf" type="text" placeholder="CPF (Somente Números)" [maxLength]="11"/>
 
       <label for="senha">Crie Uma Senha</label>
       <input id="senha" [(ngModel)]="mediador.senha" type="text" placeholder="Crie Uma Senha De Alta Complexidade"/>

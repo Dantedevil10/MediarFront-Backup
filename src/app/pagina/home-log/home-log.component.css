@@ -149,3 +149,47 @@ input{
   text-align: center;
   margin: auto;
 }
+#mens{
+  display: none;
+}
+
+
+@media (max-width: 768px) {
+  img{
+    width: 0;
+  }
+  #outraF{
+    display: none;
+  }
+  #content-box{
+    /* margin-right: 30%; */
+    width: 90%;
+    display: flex;
+    margin: auto;
+  }
+  .btns-container{
+    display: block;
+  }
+  #tr{
+    width: 60%;
+
+  }
+  #iden{
+    width: 1%;
+  }
+  #mens{
+    display:block;
+  }
+  #tu #pa,#ac,#cb{
+    display: none;
+  }
+  #tu label{
+    display: none;
+  }
+  #tu #iden{
+    display: none;
+  }
+  #dec p{
+    display: none;
+  }
+}

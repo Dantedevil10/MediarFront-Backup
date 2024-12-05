@@ -110,7 +110,7 @@ hr{
 }
 
 #people{
-  background-color: #354b5d;
+
   overflow: auto;
   border-radius: 15px;
   padding: 15px 0 0 10px;
@@ -241,4 +241,32 @@ nav{
 
 #button button:hover{
   background-color: #1b3346;
+}
+
+#mobile-message {
+  display:none; /* Mostrar o título em telas pequenas */
+}
+
+
+
+@media (max-width: 768px) {
+  /* Exibir apenas a mensagem em celulares */
+  #all-content {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #message {
+    display: none; /* Não mostrar o chat em telas pequenas */
+  }
+
+  #mobile-message {
+    display: block; /* Mostrar o título em telas pequenas */
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    padding-top: 20px;
+  }
 }

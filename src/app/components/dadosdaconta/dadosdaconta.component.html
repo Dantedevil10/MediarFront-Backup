@@ -7,7 +7,7 @@
 
       </div>
       <div id="let">
-        <p (click)="abrirCaixaProcesso()">Alterar Minha Senha</p>
+        <p id="sen" (click)="abrirCaixaProcesso()">Alterar Minha Senha</p>
         <div *ngIf="user?.tipoDeConta == 'USUARIO'">
           <p (click)="ExcluirUsuario(user?.id)">Excluir Minha Conta</p>
         </div>

@@ -157,3 +157,93 @@ select{
   margin-top: 15%;
   margin-bottom: 5%;
 }
+
+
+
+
+
+/* Ajustes para telas menores */
+@media (max-width: 1024px) {
+  #content-ac {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  #u-c {
+    width: 10px;
+    margin-left: 5%;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  input,
+  select {
+    width: 80%; /* Os campos ocupam toda a largura disponível */
+  }
+  #fb {
+    margin-left: auto;
+    margin-right: auto; /* Centraliza o botão */
+    display: block;
+  }
+  label{
+    display: none;
+  }
+  #sen{
+    display: none;
+  }
+}
+
+
+/* Ajustes para tablets */
+@media (max-width: 768px) {
+  #g-c {
+    flex-direction: column; /* Empilha o aside e o conteúdo principal */
+    gap: 2rem;
+  }
+  aside {
+    width: 100%;
+    margin-left: 0;
+    text-align: center; /* Centraliza o texto no aside */
+  }
+  #content-ac {
+    padding: 2%;
+    width: 100%;
+  }
+  #c-l {
+    text-align: center;
+  }
+  #u-c {
+    margin: 0 auto;
+    width: 100%;
+  }
+  #sen{
+    display: none;
+  }
+}
+
+/* Ajustes para celulares */
+@media (max-width: 480px) {
+  section {
+    padding: 1rem;
+  }
+  #content-ac {
+    /* padding: 1rem; */
+  }
+  #c-l h1,
+  #c-l p {
+    font-size: 1rem; /* Reduz o tamanho da fonte */
+  }
+  #fb {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+  #user-content {
+    width: 100%; /* O menu de usuário ocupa toda a largura */
+    justify-content: center;
+  }
+  aside #let p {
+    font-size: 0.8rem; /* Reduz o texto no aside */
+  }
+  #sen{
+    display: none;
+  }
+}

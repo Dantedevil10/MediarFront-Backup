@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ServiceUService } from '../../services/service-u.service';
 import { Mediador, Mensagem, Usuario } from '../../models/modelos.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-media',
@@ -28,7 +29,8 @@ export class ListaMediaComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private service: ServiceUService
+    private service: ServiceUService,
+    private router: Router
   ) {}
 
   ngOnInit(){
@@ -99,7 +101,7 @@ export class ListaMediaComponent {
       this.service.enviarMensagem(this.enviarMen).subscribe({
         next:(data)=>{
           alert('Mensagem Enviada, Cheque suas mensagens')
-          console.log(data)
+          this.router.navigate([`/home-log/${this.User?.id}`]);
         },
         error:(err)=>{
           alert('Erro ao enviar Mensagem')

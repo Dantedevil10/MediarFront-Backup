@@ -47,31 +47,39 @@ export class TeladecadastroComponent {
     console.log(this.acountD)
   }
   criarUsuario(){
-    this.serviceUService.criarUsuario(this.usuario).subscribe({
-      next:(data)=>{
-        alert('Usuario criado com sucesso!');
+    if(this.usuario.cpf.length == 11){
+      this.serviceUService.criarUsuario(this.usuario).subscribe({
+        next:(data)=>{
+          alert('Usuario criado com sucesso!');
 
-        // Redireciona para a página de Login do usuário
-        this.router.navigate([`/login`]);
+          // Redireciona para a página de Login do usuário
+          this.router.navigate([`/login`]);
 
-      },
-      error:(err)=>{
-        alert('Erro ao criar Usuario');
-        console.log(err)
-      }
-    });
+        },
+        error:(err)=>{
+          alert('Erro ao criar Usuario');
+          console.log(err)
+        }
+      });
+    }else{
+      alert('CPF Inválido')
+    }
   }
   criarMediador(){
-    this.serviceUService.criarMediador(this.mediador).subscribe({
-      next:(data)=>{
-        alert('Mediador criado com sucesso!');
-        this.router.navigate([`/login`]);
-      },
-      error:(err)=>{
-        alert('Erro ao criar Usuario');
-        console.log(err)
-      }
-    });
+    if(this.mediador.cpf.length == 11){
+      this.serviceUService.criarMediador(this.mediador).subscribe({
+        next:(data)=>{
+          alert('Mediador criado com sucesso!');
+          this.router.navigate([`/login`]);
+        },
+        error:(err)=>{
+          alert('Erro ao criar Usuario');
+          console.log(err)
+        }
+      });
+    }else{
+      alert('CPF Inválido')
+    }
   }
 
 }

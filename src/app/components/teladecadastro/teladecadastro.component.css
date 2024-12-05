@@ -76,3 +76,15 @@ h1{
 #cad-box button:hover{
   border: 6px solid rgb(0, 110, 255);
 }
+
+
+@media (max-width: 768px) {
+  header img{
+    display: flex;
+    margin: auto;
+  }
+  section{
+    padding-bottom: 20%;
+  }
+
+}

@@ -4,7 +4,7 @@
 <div id="second" >
   <h1 style="padding: 60px;">Olá {{user?.nomeUsuario}} Bem-Vindo ao Mediar</h1>
   <div class="btns-container"> <!-- essa div guarda os botões iniciais-->
-    <div style="display: flex;margin-right: 3%;margin-left: 5%;width: 40%;">
+    <div id="outraF" style="display: flex;margin-right: 3%;margin-left: 5%;width: 40%;">
       <img width="100%" style="border-radius: 10px;"
       src="assets/Images/fotoCoisasJudicial.png" alt="">
     </div>
@@ -52,7 +52,7 @@
   <div id="tr">
     <div style="display: flex;flex-direction: column;margin: 10px;">
       <label style="font-size: 1.1rem;" for="iden">Digite o Numero de identificação do processo</label>
-      <input style="width:97%;padding: 10px;border: 1px solid grey;border-radius: 5px;margin-top: 5px;"
+      <input style="width:87%;padding: 10px;border: 1px solid grey;border-radius: 5px;margin-top: 5px;"
         type="text" id="iden" [(ngModel)]="numeroProcesso">
     </div>
     <div id="dec">
@@ -63,7 +63,8 @@
 </div>
 <div id="ou" *ngIf="triggerM">
   <div id="tu">
-    <p style="margin: 5px; color: #e9e9d0 ;">* Depois de Enviar esta mensagem, o usuario que você contatou estará disponível na sua aba de mensagens</p>
+    <p id="mens">Sinto Muito Mas este Recurso Não está Disponível Para Celulares</p>
+    <p id="pa" style="margin: 5px; color: #e9e9d0 ;">* Depois de Enviar esta mensagem, o usuario que você contatou estará disponível na sua aba de mensagens</p>
     <div style="display: flex;flex-direction: column;margin: 10px;">
       <label style="font-size: 1.1rem;" for="iden">Digite o Numero de identificação(ID) do Usuario</label>
       <input style="width:97%;padding: 10px;border: 1px solid grey;border-radius: 5px;margin-top: 5px;"
@@ -74,8 +75,8 @@
     </div>
     <div id="dec">
       <button style="background-color: rgba(255, 0, 0, 0.63);" (click)="abrirCaixaEnviar()">Cancelar</button>
-      <button style="background-color: rgba(0, 128, 0, 0.616);" (click)="enviarMensagemPrimeirVez()">Continuar</button><p>Ou</p>
-      <button style="background-color: rgba(0, 128, 0, 0.616);" routerLink="/lista/{{user?.id}}">Encontrar Usuario Por Seu Nome</button>
+      <button id="ac" style="background-color: rgba(0, 128, 0, 0.616);" (click)="enviarMensagemPrimeirVez()">Continuar</button><p>Ou</p>
+      <button id="cb" style="background-color: rgba(0, 128, 0, 0.616);" routerLink="/lista/{{user?.id}}">Encontrar Usuario Por Seu Nome</button>
     </div>
   </div>
 </div>
