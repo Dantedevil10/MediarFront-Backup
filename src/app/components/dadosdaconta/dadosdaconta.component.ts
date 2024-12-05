@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ServiceUService } from '../../services/service-u.service';
 import { Mediador, MediadorCri, Usuario, UsuarioCri } from '../../models/modelos.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dadosdaconta',
@@ -37,7 +38,8 @@ export class DadosdacontaComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private serviceUService: ServiceUService
+    private serviceUService: ServiceUService,
+    private router: Router
   ) {}
 
   async ngOnInit() {
@@ -182,6 +184,7 @@ export class DadosdacontaComponent {
     this.serviceUService.ExcluirUsuario(id).subscribe({
       next:(data)=>{
         alert('Conta Excluida Com Sucesso')
+        this.router.navigate([`/`]);
       },
       error:(err)=>{
         alert('Erro ao Tentar Excluir Usuario')
@@ -193,6 +196,7 @@ export class DadosdacontaComponent {
     this.serviceUService.ExcluirMediador(id).subscribe({
       next:(data)=>{
         alert('Conta Excluida Com Sucesso')
+        this.router.navigate([`/`]);
       },
       error:(err)=>{
         alert('Erro ao Tentar Excluir Usuario')
