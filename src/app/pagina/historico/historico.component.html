@@ -50,7 +50,7 @@
                   <p *ngIf="item.urgencia; else naour"><b>Urgente:</b> Sim</p>
                   <ng-template #naour> <p><b>Urgente:</b> Não</p> </ng-template>
                   <!-- Botão para ir para a tela de andamento -->
-                  <a routerLink="/andamento/{{item.id}}" class="btn-andamento">Ver Andamento</a>
+                  <a style="color: white;" routerLink="/andamento/{{item.id}}/{{user?.id}}" class="btn-andamento">Ver Andamento</a>
                 </div>
               </div>
             </div>

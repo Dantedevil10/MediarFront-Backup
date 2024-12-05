@@ -6,16 +6,17 @@
 }
 
 #pro{
-  background-color: rgba(128, 128, 128, 0.459);
+  background-color: #131B2B;
   margin-top: 20px;
   width: 93%;
   border-radius: 5px;
+  border: 1px solid #e9e9d0;
   padding: 10px;
   transition: all ease 0.5s;
   cursor: pointer;
 }
 #pro:hover{
-  background-color: white;
+  background-color: #131b2b65;
   box-shadow: 1px 1px 5px rgba(128, 128, 128, 0.781);
 }
 

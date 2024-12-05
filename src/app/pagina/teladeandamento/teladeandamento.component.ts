@@ -1,7 +1,7 @@
 import { Component, ElementRef, Renderer2, ViewChild, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ServiceUService } from '../../services/service-u.service';  // Importando o serviço
-import { Processo } from '../../models/modelos.model'; // Importe a interface Processo
+import { Mediador, Processo, Usuario } from '../../models/modelos.model'; // Importe a interface Processo
 
 @Component({
   selector: 'app-teladeandamento',
@@ -10,6 +10,8 @@ import { Processo } from '../../models/modelos.model'; // Importe a interface Pr
 })
 export class TeladeandamentoComponent implements AfterViewInit {
   @ViewChild('teste') teste!: ElementRef;
+
+  user: Usuario | Mediador | null = null;
 
   processo: Processo | null = null;  // Tipagem usando a interface Processo
   aberto: boolean = false;
@@ -38,6 +40,35 @@ export class TeladeandamentoComponent implements AfterViewInit {
           // Tratar erro, por exemplo, exibir mensagem de erro
         }
       });
+    }
+
+    const userId = this.route.snapshot.paramMap.get('UId');
+
+    if (userId) {
+      try{
+        // Busca os dados do usuário usando o serviço
+        this.serviceUService.DadosUsers(userId).subscribe({
+          next: (data: Usuario) => {
+            this.user = data; // Armazena os dados do usuário
+          },
+          error: (err) => {
+            console.error(err);
+
+          }
+        });
+        //Caso o Usuario não for encontrado, um Usuario do tipo Mediador Será Buscado
+        this.serviceUService.DadosMediador(userId).subscribe({
+          next:(data:Mediador)=>{
+            this.user = data;
+          },
+          error:(err)=>{
+            console.log('Erro ao Carregar Dados' + err)
+          }
+        })
+
+      }catch(err){
+        console.log(err)
+      }
     }
   }
 

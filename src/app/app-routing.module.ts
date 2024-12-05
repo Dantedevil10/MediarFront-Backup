@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'agendar/:id', component: AgendamentoComponent},
   { path: 'login', component: TeladeloginComponent},
   { path: 'sobre-nos', component: SobreNosComponent},
-  { path: 'andamento/:id', component: TeladeandamentoComponent},
+  { path: 'andamento/:id/:UId', component: TeladeandamentoComponent},
   { path: 'home-log/:id', component: HomeLogComponent},
   { path: 'noti', component: NotificacaoComponent},
   { path: 'historico/:id', component: HistoricoComponent},
