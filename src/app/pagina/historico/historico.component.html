@@ -2,7 +2,7 @@
 <section style="background: #131B2B;min-height: 88vh;">
 
   <main>
-    
+
     <div id="main-content">
       <div id="filtro">
         <div class="fi">
@@ -42,7 +42,7 @@
               <div *ngIf="filtroNomeAutor === '' || item.nomeAutor.toLowerCase().includes(filtroNomeAutor.toLowerCase())">
                 <!-- Filtro CPF do Autor -->
                 <div *ngIf="filtroCpfAutor === '' || item.cpfAutor.includes(filtroCpfAutor)">
-                  <h1>Titulo do Processo</h1>
+                  <h1>Processo</h1>
                   <p><b>Status:</b> {{ item.status }}</p>
                   <p><b>Numero de identificação do processo:</b> {{ item.id }}</p>
                   <p><b>Autor do Processo:</b> {{ item.nomeAutor }}</p>
