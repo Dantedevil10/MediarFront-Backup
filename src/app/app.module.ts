@@ -19,6 +19,7 @@ import { NotificacaoComponent } from './pagina/notificacao/notificacao.component
 import { SobreNosComponent } from './pagina/sobre-nos/sobre-nos.component';
 import { TeladeandamentoComponent } from './pagina/teladeandamento/teladeandamento.component';
 import { ListaMediaComponent } from './components/lista-media/lista-media.component';
+import { FooterSComponent } from './components/footer-s/footer-s.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ListaMediaComponent } from './components/lista-media/lista-media.compon
     NotificacaoComponent,
     SobreNosComponent,
     TeladeandamentoComponent,
-    ListaMediaComponent
+    ListaMediaComponent,
+    FooterSComponent
   ],
   imports: [
     BrowserModule,
