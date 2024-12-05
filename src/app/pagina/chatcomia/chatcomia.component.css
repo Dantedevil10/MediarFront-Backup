@@ -1,17 +1,18 @@
-
 section{
-  background: #131B2B ;
+  background: #131B2B;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 section div{
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
 }
+
 button{
   background: transparent;
   border: 1px solid #e9e9d0;
@@ -19,7 +20,23 @@ button{
   border-radius: 5px;
   transition: all ease 0.5s;
 }
+
 button:hover{
   background: #e9e9d0;
   color: #131B2B;
+}
+
+textarea {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: none;
+  color: black;
+}
+
+p {
+  color: #e9e9d0;
+  font-size: 16px;
 }

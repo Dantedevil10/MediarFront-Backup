@@ -1,9 +1,27 @@
 <app-header-log/>
 <section>
   <div>
-    <p>
-      Querido Usuario ,Lamentamos mas a sua versão do sistema não está inclusa com o chat com Inteligência Artificial
-    </p>
+    <div style="text-align: center;">
+      <h1>
+        Você está utilizando uma versão de teste da Inteligência Artificial
+      <p style="color: rgba(255, 0, 0, 0.712);">Tenha em Mente Que isto é uma estimativa sempre consulte primeiro o profissional</p>
+      </h1>
+    </div>
+
+    <p>Descreva o seu caso jurídico e receba uma estimativa sobre a possibilidade de vitória.</p>
+
+    <!-- Campo de descrição do caso -->
+    <textarea [(ngModel)]="caseDescription" placeholder="Descreva seu caso aqui..." rows="6"></textarea>
+
+    <!-- Botão para simular a IA -->
+    <button (click)="getCaseEstimate()">Enviar Caso</button>
+
+    <!-- Mensagem de "Pensando..." enquanto a IA processa -->
+    <p *ngIf="isThinking">Pensando...</p>
+
+    <!-- Resposta da IA -->
+    <p *ngIf="response">{{ response }}</p>
+
     <button routerLink="/home-log/{{user?.id}}">Voltar Para A Home</button>
   </div>
 </section>
