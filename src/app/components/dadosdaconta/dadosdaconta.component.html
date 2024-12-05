@@ -8,7 +8,13 @@
       </div>
       <div id="let">
         <p (click)="abrirCaixaProcesso()">Alterar Minha Senha</p>
-        <p>Excluir Minha Conta</p>
+        <div *ngIf="user?.tipoDeConta == 'USUARIO'">
+          <p (click)="ExcluirUsuario(user?.id)">Excluir Minha Conta</p>
+        </div>
+        <div *ngIf="user?.tipoDeConta == 'MEDIADOR'">
+          <p (click)="ExcluirMediador(user?.id)">Excluir Minha Conta</p>
+        </div>
+
       </div>
     </aside>
 
@@ -87,6 +93,9 @@
         <button style="background-color: rgba(0, 128, 0, 0.616);"(click)="editarSenhaMediador()">Continuar</button>
       </div>
     </div>
+  </div>
+  <div id="ou" *ngIf="triggerE">
+
   </div>
 
 </section>

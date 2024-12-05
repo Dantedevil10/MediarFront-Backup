@@ -12,6 +12,7 @@ export class DadosdacontaComponent {
   user: Usuario | Mediador | null = null; // Armazena os dados do usuário com tipagem correta
 
   trigger:boolean = false;
+  triggerE:boolean = false;
   senhaVelha = '';
   senhaNova = '';
   originalMediador: MediadorCri | null = null;
@@ -175,6 +176,29 @@ export class DadosdacontaComponent {
         }
       })
     }
+  }
+
+  ExcluirUsuario(id:any){
+    this.serviceUService.ExcluirUsuario(id).subscribe({
+      next:(data)=>{
+        alert('Conta Excluida Com Sucesso')
+      },
+      error:(err)=>{
+        alert('Erro ao Tentar Excluir Usuario')
+        console.log(err)
+      }
+    })
+  }
+  ExcluirMediador(id:any){
+    this.serviceUService.ExcluirMediador(id).subscribe({
+      next:(data)=>{
+        alert('Conta Excluida Com Sucesso')
+      },
+      error:(err)=>{
+        alert('Erro ao Tentar Excluir Usuario')
+        console.log(err)
+      }
+    })
   }
 
 }

@@ -31,6 +31,9 @@ export class ServiceUService {
   private editarUser = 'https://backmediartestes-production.up.railway.app/userCom/editar'
   private editarmediador = 'https://backmediartestes-production.up.railway.app/userMedi/editarMedi'
 
+  private deletarUser = 'https://backmediartestes-production.up.railway.app/userCom/deletarUser';
+  private deletarMedi = 'https://backmediartestes-production.up.railway.app/userMedi/deletarMedi';
+
   /////////////////////////////////////////////////////////////////////////////// teste Login
   private apiUrl = 'https://backmediartestes-production.up.railway.app/auth/login';
   ///////////////////////////////////////////////////////////////////////////////
@@ -43,8 +46,6 @@ export class ServiceUService {
   getMensagens(usuarioId: string, contatoId: string): Observable<Mensagem[]> {
     return this.http.get<Mensagem[]>(`https://backmediartestes-production.up.railway.app/mensagens/conversa/${usuarioId}/${contatoId}`);
   }
-
-
 
 
   // Método para obter dados de um usuário por ID, agora tipado com a interface 'Usuario'
@@ -82,6 +83,12 @@ export class ServiceUService {
 
   editarUsuario(usuario:UsuarioCri,id:any): Observable<UsuarioCri>{
     return this.http.put<UsuarioCri>(`${this.editarUser}/${id}`,usuario)
+  }
+  ExcluirUsuario(id:any){
+    return this.http.delete<Usuario>(`${this.deletarUser}/${id}`)
+  }
+  ExcluirMediador(id:any){
+    return this.http.delete<Mediador>(`${this.deletarMedi}/${id}`)
   }
 
   criarMediador(mediador:MediadorCri): Observable<MediadorCri>{
