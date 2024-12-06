@@ -61,7 +61,7 @@ export class ChatcomiaComponent {
 
     // Após um tempo (simulando processamento), gera a resposta
     setTimeout(() => {
-      const keywords = ['roubo', 'fraude', 'herança', 'acidente', 'contrato'];
+      const keywords = ['roubo', 'fraude', 'herança', 'acidente', 'contrato','uso indevido de imagem'];
       let score = 0;
 
       // Simula um cálculo simples baseado em palavras-chave encontradas na descrição
